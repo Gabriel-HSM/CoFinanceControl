@@ -1,6 +1,7 @@
 # Introdução
 
 [Aqui a equipe deve criar um texto descritivo com a visão geral do problema abordado, apresentando o ambiente e as situações envolvidas no problema.]
+Acredito não ser novidade que muitas pessoas se encontram com problmeas financeiros de diversas formas, seja por uma compra impulsiva, ou seja por falta de controle ou simplismente não sabem o que fazer com seu dinheiro. Existe ainda situações mais dificeis de lidas, onde as pessoas compram no cartão e seja por um imprevisto ou qualquer situação que seja, abandonam a dívida sem ter ideia de como irão pagar.
 
 ## Problema
 [Aqui a equipe deve fornecer uma descrição detalhada do problema a ser resolvido. Não é o momento adequado para abordar questões técnicas relacionadas ao desenvolvimento da aplicação. O objetivo é compreender e comunicar de maneira precisa qual é o desafio ou necessidade que motiva a criação da aplicação.]
