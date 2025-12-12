@@ -17,8 +17,6 @@ O problema central, portanto, é: falta uma ferramenta acessível, personalizáv
 
 ---
 
-## Objetivos
-
 ## **Objetivo Geral**
 Desenvolver um aplicativo de controle financeiro que permita que pessoas físicas e empresas organizem suas entradas e saídas, visualizem padrões de gastos e obtenham relatórios claros que facilitem a tomada de decisões e a melhoria da saúde financeira.
 
