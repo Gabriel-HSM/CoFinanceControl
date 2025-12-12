@@ -1,36 +1,66 @@
 # Introdução
 
-[Aqui a equipe deve criar um texto descritivo com a visão geral do problema abordado, apresentando o ambiente e as situações envolvidas no problema.]
-Acredito não ser novidade que muitas pessoas se encontram com problmeas financeiros de diversas formas, seja por uma compra impulsiva, ou seja por falta de controle ou simplismente não sabem o que fazer com seu dinheiro. Existe ainda situações mais dificeis de lidas, onde as pessoas compram no cartão e seja por um imprevisto ou qualquer situação que seja, abandonam a dívida sem ter ideia de como irão pagar.
+Acredito que não seja novidade para ninguém que lidar com dinheiro é um desafio constante, tanto para pessoas físicas quanto para empresas. Em algum momento da vida todo mundo já passou por alguma dificuldade financeira — seja por compras impulsivas, falta de controle, imprevistos ou simplesmente por não saber exatamente para onde o dinheiro está indo. E quando a situação piora, as dívidas aparecem, o cartão vira um vilão e a sensação de desorganização só aumenta.
+
+A proposta deste projeto nasce justamente desse cenário. A ideia é desenvolver um aplicativo simples, direto e eficiente que ajude qualquer pessoa — seja um indivíduo ou uma empresa — a realmente entender seus gastos, registrar suas entradas e saídas, e visualizar onde estão os famosos “vazamentos” financeiros que passam despercebidos. A filosofia do projeto é clara: se cuidarmos dos pequenos detalhes, as grandes mudanças acontecem. Ou seja, ao organizar pequenas compras, comportamentos repetitivos e despesas esquecidas, o usuário consegue transformar seu cenário financeiro de forma mais leve e possível.
+
+O objetivo inicial é oferecer um controle financeiro pessoal, mas com estrutura robusta o suficiente para atender também pequenas empresas que sofrem com a falta de ferramentas intuitivas. Tudo isso sem monitorar automaticamente o usuário — aqui, a privacidade é prioridade. O aplicativo apenas organiza e transforma em informação clara aquilo que o próprio usuário decidir registrar.
+
+---
 
 ## Problema
-[Aqui a equipe deve fornecer uma descrição detalhada do problema a ser resolvido. Não é o momento adequado para abordar questões técnicas relacionadas ao desenvolvimento da aplicação. O objetivo é compreender e comunicar de maneira precisa qual é o desafio ou necessidade que motiva a criação da aplicação.]
+Muitas pessoas e empresas enfrentam dificuldades para organizar suas finanças por falta de ferramentas práticas, objetivas e acessíveis.A filosofia utilizada será uma frase que pode ser traduzida de diversas formas, Acreditamos que se estiver atento aos detalhes, aos pequenos detalhes as grandes mudanças acontecerão. Pequenos gastos diários passam despercebidos e, somados, se tornam grandes vilões do orçamento. Empresas menores, por sua vez, frequentemente dependem de planilhas confusas ou aplicativos que não se adaptam à realidade delas, dificultando o controle de fluxo de caixa, despesas recorrentes e planejamento financeiro.
 
-Este link pode ajudar a equipe a entender mais sobre definição do problema: [Objetivos, Problema de pesquisa e Justificativa.](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
+Além disso, boa parte das soluções disponíveis no mercado é complexa, invasiva ou limitada. Algumas exigem conexão automática com bancos (o que gera insegurança), outras não permitem personalização de categorias, e muitas não oferecem relatórios realmente úteis para tomada de decisão.
 
+O problema central, portanto, é: falta uma ferramenta acessível, personalizável e segura que permita ao usuário — pessoa física ou jurídica — entender e controlar suas finanças de forma clara, organizada e eficiente, utilizando apenas os dados que ele decidir inserir manualmente.
+
+---
 
 ## Objetivos
 
-[Aqui a equipe deve realizar uma descrição detalhada dos objetivos do trabalho, ressaltando quais as questões principais do problema a serem resolvidas pelo projeto, não é a hora de apresentar requisitos detalhados.]
- 
-Este link pode ajudar a equipe a entender mais sobre definição dos objetivos: [Objetivos, Problema de pesquisa e Justificativa.](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
+## **Objetivo Geral**
+Desenvolver um aplicativo de controle financeiro que permita que pessoas físicas e empresas organizem suas entradas e saídas, visualizem padrões de gastos e obtenham relatórios claros que facilitem a tomada de decisões e a melhoria da saúde financeira.
+
+## **Objetivos Específicos**
+- Permitir que o usuário registre manualmente todas as entradas e despesas.
+- Oferecer categorias personalizáveis conforme a necessidade do usuário.
+- Gerar relatórios financeiros claros e acessíveis, baseados nos dados informados.
+- Identificar padrões de gastos e apontar possíveis “vazamentos”.
+- Permitir exportação de dados para planilhas Excel.
+- Permitir importação de informações caso o usuário já utilize uma planilha existente.
+- Garantir total privacidade e segurança das informações inseridas.
+- Criar uma base para que, no futuro, o aplicativo ofereça rotas de saída de dívidas e sugestões financeiras personalizadas.
+
+---
 
 ## Justificativa
 
-[Aqui a equipe deve descrever a importância ou a motivação para trabalhar com o problema definido. Indique as razões pelas quais a equipe escolheu o problema e definiu os objetivos.
+O controle financeiro é uma necessidade crescente tanto para pessoas quanto para empresas. Segundo dados recentes da **Serasa**, mais de **72 milhões de brasileiros estavam endividados em 2024**, representando o maior volume de inadimplentes da última década. Boa parte dessas dívidas está diretamente relacionada ao cartão de crédito, compras desorganizadas e falta de planejamento.
 
-Devem ser apresentados dados de fontes relevantes e confiáveis sobre o problema, inserindo-o como alvo de estudo. Sugere-se que a equipe utilize questionários, entrevistas e dados estatísticos, que devem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pela equipe.]
+Para pequenas empresas, o cenário não é muito diferente. O Sebrae aponta que aproximadamente **60% dos pequenos negócios enfrentam problemas de fluxo de caixa**, e a falta de controle financeiro é um dos principais motivos de falência.
 
-Este link pode ajudar a equipe a formular a justificativa: [Como montar a justificativa.](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Apesar disso, muitas ferramentas disponíveis hoje são complexas ou genéricas, não se adaptando à realidade de quem precisa de algo simples, direto e realmente útil. Usuários buscam praticidade, privacidade e personalização — três pilares que ainda são pouco explorados pelos aplicativos populares.
+
+Além dos dados estatísticos, conversas informais, entrevistas e questionamentos com potenciais usuários mostram que:
+
+- a maioria registra seus gastos em planilhas desorganizadas;
+- muitos não sabem exatamente quanto gastam com pequenos itens;
+- empresas menores sentem falta de um sistema simples que ajude no controle de despesas e entradas.
+
+Assim, este projeto é justificado pela relevância social (ajuda pessoas a reorganizar suas vidas financeiras), econômica (contribui para prevenção do endividamento), e tecnológica (preenche lacunas de mercado com uma solução prática e segura).
+
+---
 
 ## Público-Alvo
 
-[Aqui é necessário descrever os atores envolvidos no problema, destacando os diferentes perfis de usuários. O propósito é apresentar as características, necessidades, conhecimentos prévios e experiência com a tecnologia do público-alvo.
+O público-alvo engloba qualquer pessoa ou empresa que deseje melhorar seu controle financeiro, independentemente do nível de conhecimento em tecnologia. Isso inclui:
 
-Sugere-se que a equipe utilize questionários e/ou entrevistas a fim de conhecer os atores que compõem o público alvo.]
+- Pessoas físicas que desejam entender melhor para onde seu dinheiro está indo.
+- Jovens adultos que buscam independência financeira.
+- Famílias que precisam organizar gastos domésticos.
+- Profissionais autônomos que têm entradas e saídas variáveis.
+- Pequenas empresas que não possuem sistemas próprios de gestão.
+- Usuários que desejam simplicidade, segurança e privacidade total.
 
-Os links abaixo podem ajudar a equipe a conhecer um pouco mais sobre o público-alvo. 
-
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-
+Esse público é diverso, mas tem em comum a necessidade de uma ferramenta eficiente, intuitiva e que não complique sua rotina. O aplicativo atende desde usuários leigos até pessoas com maior domínio digital, pois oferece controle manual, personalização e relatórios claros.
