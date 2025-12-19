@@ -1,6 +1,6 @@
-# APP DE CONTROLE FINANCEIRO
+# CoFinance App
 
-`T001-2025.SEMDEC/SA`
+`Desenvolvimento Web com Aspnet Core`
 
 `NEXT CODERS`
 
@@ -16,7 +16,7 @@ Além disso, o sistema foi projetado com foco em escalabilidade e usabilidade, p
 
 ## Orientador
 
-* Willian Santana
+* Willian Sant' Anna
 
 # Documentação
 
