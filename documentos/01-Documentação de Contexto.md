@@ -1,10 +1,10 @@
 # Introdução
 
-Acredito que não seja novidade para ninguém que lidar com dinheiro é um desafio constante, tanto para pessoas físicas quanto para empresas. Em algum momento da vida todo mundo já passou por alguma dificuldade financeira — seja por compras impulsivas, falta de controle, imprevistos ou simplesmente por não saber exatamente para onde o dinheiro está indo. E quando a situação piora, as dívidas aparecem, o cartão vira um vilão e a sensação de desorganização só aumenta.
+Acredito que não seja novidade para ninguém que lidar com dinheiro é um desafio constante, tanto para pessoas físicas quanto para empresas. Em algum momento da vida todo mundo já passou por alguma dificuldade financeira seja por compras impulsivas, falta de controle, imprevistos ou simplesmente por não saber exatamente para onde o dinheiro está indo. E quando a situação piora, as dívidas aparecem, o cartão vira um vilão e a sensação de desorganização só aumenta.
 
 A proposta deste projeto nasce justamente desse cenário. A ideia é desenvolver um aplicativo simples, direto e eficiente que ajude qualquer pessoa seja um indivíduo ou uma empresa a realmente entender seus gastos, registrar suas entradas e saídas, e visualizar onde estão os famosos “vazamentos” financeiros que passam despercebidos. A filosofia do projeto é clara: se cuidarmos dos pequenos detalhes, as grandes mudanças acontecem. Ou seja, ao organizar pequenas compras, comportamentos repetitivos e despesas esquecidas, o usuário consegue transformar seu cenário financeiro de forma mais leve e possível.
 
-O objetivo inicial é oferecer um controle financeiro pessoal, mas com estrutura robusta o suficiente para atender também pequenas empresas que sofrem com a falta de ferramentas intuitivas. Tudo isso sem monitorar automaticamente o usuário — aqui, a privacidade é prioridade. O aplicativo apenas organiza e transforma em informação clara aquilo que o próprio usuário decidir registrar.
+O objetivo inicial é oferecer um controle financeiro pessoal, mas com estrutura robusta o suficiente para atender também pequenas empresas que sofrem com a falta de ferramentas intuitivas. Tudo isso sem monitorar automaticamente o usuário aqui, a privacidade é prioridade. O aplicativo apenas organiza e transforma em informação clara aquilo que o próprio usuário decidir registrar.
 
 ---
 
@@ -13,7 +13,7 @@ Muitas pessoas e empresas enfrentam dificuldades para organizar suas finanças p
 
 Além disso, boa parte das soluções disponíveis no mercado é complexa, invasiva ou limitada. Algumas exigem conexão automática com bancos (o que gera insegurança), outras não permitem personalização de categorias, e muitas não oferecem relatórios realmente úteis para tomada de decisão.
 
-O problema central, portanto, é: falta uma ferramenta acessível, personalizável e segura que permita ao usuário — pessoa física ou jurídica — entender e controlar suas finanças de forma clara, organizada e eficiente, utilizando apenas os dados que ele decidir inserir manualmente.
+O problema central, portanto, é: falta uma ferramenta acessível, personalizável e segura que permita ao usuário pessoa física ou jurídica entender e controlar suas finanças de forma clara, organizada e eficiente, utilizando apenas os dados que ele decidir inserir manualmente.
 
 ---
 
@@ -38,7 +38,7 @@ O controle financeiro é uma necessidade crescente tanto para pessoas quanto par
 
 Para pequenas empresas, o cenário não é muito diferente. O Sebrae aponta que aproximadamente **60% dos pequenos negócios enfrentam problemas de fluxo de caixa**, e a falta de controle financeiro é um dos principais motivos de falência.
 
-Apesar disso, muitas ferramentas disponíveis hoje são complexas ou genéricas, não se adaptando à realidade de quem precisa de algo simples, direto e realmente útil. Usuários buscam praticidade, privacidade e personalização — três pilares que ainda são pouco explorados pelos aplicativos populares.
+Apesar disso, muitas ferramentas disponíveis hoje são complexas ou genéricas, não se adaptando à realidade de quem precisa de algo simples, direto e realmente útil. Usuários buscam praticidade, privacidade e personalização três pilares que ainda são pouco explorados pelos aplicativos populares.
 
 Além dos dados estatísticos, conversas informais, entrevistas e questionamentos com potenciais usuários mostram que:
 
