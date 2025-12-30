@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\coFinanceControl.Domain\\coFinanceControl.Domain.csproj",
-      "projectName": "coFinanceControl.Domain",
-      "projectPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\coFinanceControl.Domain\\coFinanceControl.Domain.csproj",
+      "projectUniqueName": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Domain\\CoFinanceControl.Domain.csproj",
+      "projectName": "CoFinanceControl.Domain",
+      "projectPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Domain\\CoFinanceControl.Domain.csproj",
       "packagesPath": "C:\\Users\\Iel Sistema\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\coFinanceControl.Domain\\obj\\",
+      "outputPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Iel Sistema\\AppData\\Roaming\\NuGet\\NuGet.Config"

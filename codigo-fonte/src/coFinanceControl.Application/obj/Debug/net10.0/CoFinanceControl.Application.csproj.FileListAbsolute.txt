@@ -1,0 +1,16 @@
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\bin\Debug\net10.0\CoFinanceControl.Application.deps.json
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\bin\Debug\net10.0\CoFinanceControl.Application.dll
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\bin\Debug\net10.0\CoFinanceControl.Application.pdb
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\bin\Debug\net10.0\CoFinanceControl.Domain.dll
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\bin\Debug\net10.0\CoFinanceControl.Domain.pdb
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanceControl.Application.csproj.AssemblyReference.cache
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanceControl.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanceControl.Application.AssemblyInfoInputs.cache
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanceControl.Application.AssemblyInfo.cs
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanceControl.Application.csproj.CoreCompileInputs.cache
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanceControl.Application.sourcelink.json
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanc.50C58E34.Up2Date
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanceControl.Application.dll
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\refint\CoFinanceControl.Application.dll
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\CoFinanceControl.Application.pdb
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Application\obj\Debug\net10.0\ref\CoFinanceControl.Application.dll

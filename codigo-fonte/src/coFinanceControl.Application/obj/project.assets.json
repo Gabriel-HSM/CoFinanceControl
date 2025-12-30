@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "CoFinanceControl.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/CoFinanceControl.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CoFinanceControl.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CoFinanceControl.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CoFinanceControl.Domain/CoFinanceControl.Domain.csproj",
+      "msbuildProject": "../CoFinanceControl.Domain/CoFinanceControl.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "CoFinanceControl.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Iel Sistema\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\coFinanceControl.Application\\coFinanceControl.Application.csproj",
-      "projectName": "coFinanceControl.Application",
-      "projectPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\coFinanceControl.Application\\coFinanceControl.Application.csproj",
+      "projectUniqueName": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Application\\CoFinanceControl.Application.csproj",
+      "projectName": "CoFinanceControl.Application",
+      "projectPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Application\\CoFinanceControl.Application.csproj",
       "packagesPath": "C:\\Users\\Iel Sistema\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\coFinanceControl.Application\\obj\\",
+      "outputPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Iel Sistema\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -31,7 +50,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Domain\\CoFinanceControl.Domain.csproj": {
+              "projectPath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Domain\\CoFinanceControl.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

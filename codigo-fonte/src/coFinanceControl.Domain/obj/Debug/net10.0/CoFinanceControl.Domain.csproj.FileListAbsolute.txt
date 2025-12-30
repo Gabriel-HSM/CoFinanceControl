@@ -1,0 +1,12 @@
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\bin\Debug\net10.0\CoFinanceControl.Domain.deps.json
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\bin\Debug\net10.0\CoFinanceControl.Domain.dll
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\bin\Debug\net10.0\CoFinanceControl.Domain.pdb
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\CoFinanceControl.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\CoFinanceControl.Domain.AssemblyInfoInputs.cache
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\CoFinanceControl.Domain.AssemblyInfo.cs
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\CoFinanceControl.Domain.csproj.CoreCompileInputs.cache
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\CoFinanceControl.Domain.sourcelink.json
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\CoFinanceControl.Domain.dll
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\refint\CoFinanceControl.Domain.dll
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\CoFinanceControl.Domain.pdb
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Domain\obj\Debug\net10.0\ref\CoFinanceControl.Domain.dll
