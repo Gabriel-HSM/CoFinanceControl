@@ -3,7 +3,7 @@ namespace CoFinanceControl.Domain
     public class Credencial
     {
         public Guid Id { get; set; }
-        public Guid IdUsuario { get; set; }
+        public Guid UsuarioId { get; set; }
         public required string Email { get; set; }
         public required string Senha { get; set; }
 
