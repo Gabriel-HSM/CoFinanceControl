@@ -42,7 +42,7 @@ public class AppDbContext : DbContext
             e.ToTable("Credenciais");
             e.HasKey(c => c.Id);
             e.HasIndex(u => u.UsuarioId).IsUnique();
-            e.HasIndex(c => c.Email).IsUnique(); //evitar duplicação de email
+            e.HasIndex(c => c.Email).IsUnique();
             e.Property(c => c.UsuarioId).HasColumnName("usuario_id").IsRequired();
             e.Property(c => c.Senha).HasColumnName("senha").IsRequired();
             e.Property(c => c.Email).HasColumnName("email").IsRequired().HasMaxLength(100);
