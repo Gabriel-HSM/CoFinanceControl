@@ -25,5 +25,12 @@ namespace CoFinanceControl.Domain
                 DataCriacao = DateTime.UtcNow,
             };
         }
+
+        public void Atualizar(CategoriaNome nome, Descricao descricao)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            DataAtualizacao = DateTime.UtcNow;
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace CoFinanceControl.Domain
         {
             if (Senha != senhaAntiga)
             {
-                throw new InvalidOperationException("Senha antiga incorreta.");
+                throw new InvalidOperationException("A senha antiga não corresponde.");
             }
 
             Senha = novaSenha;
