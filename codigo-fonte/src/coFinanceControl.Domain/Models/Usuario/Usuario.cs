@@ -19,7 +19,7 @@ public class Usuario
 
     private Usuario(){}
 
-    //Usuario Guest, sem credencial e apenas testa o sistema
+    //Usuario Guest, sem credencial e apenas testar o sistema
     public static Usuario Criar(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento dataNascimento, TipoPessoa tipoPessoa)
     {
         return new Usuario
