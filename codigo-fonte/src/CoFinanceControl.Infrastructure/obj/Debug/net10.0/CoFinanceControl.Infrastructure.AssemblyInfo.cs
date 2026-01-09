@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoFinanceControl.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f00b01ff587749ca39d4e2de9da2c4b7acadaf4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17a8faeaf7b6dfddfda1a0f7a7812d07d77fd5ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoFinanceControl.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoFinanceControl.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

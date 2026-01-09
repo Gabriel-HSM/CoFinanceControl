@@ -12,15 +12,14 @@ public class Usuario
     public DataNascimento? DataNascimento { get; private set; }
     public TipoPessoa TipoPessoa { get; private set; }
     public DateTime DataCriacao { get; private set; }
-    public DateTime DataAtualizacao { get; private set; }
-    public Credencial? Credencial { get; private set; } //possivel mudança futura
-
+    public DateTime? DataAtualizacao { get; private set; }
+    public Credencial? Credencial { get; private set; }
     public ICollection<Categoria> Categorias { get; private set; } = new List<Categoria>();
 
     private Usuario(){}
 
     //Usuario Guest, sem credencial e apenas testar o sistema
-    public static Usuario Criar(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento dataNascimento, TipoPessoa tipoPessoa)
+    public static Usuario Criar(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento? dataNascimento, TipoPessoa tipoPessoa)
     {
         return new Usuario
         {
@@ -33,7 +32,7 @@ public class Usuario
         };
     }
 
-    public void Atualizar(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento dataNascimento, TipoPessoa tipoPessoa)
+    public void Atualizar(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento? dataNascimento, TipoPessoa tipoPessoa)
     {
         Nome = nome;
         Sobrenome = sobrenome;
@@ -52,5 +51,5 @@ public class Usuario
         Credencial = Credencial.Criar(Id, email, senha);
     }
 
-    //Adicionar Exclusão de conta de conta no futuro
+    //Adicionar Exclusão de conta no futuro
 }

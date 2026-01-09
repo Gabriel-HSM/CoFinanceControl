@@ -9,8 +9,7 @@ namespace CoFinanceControl.Domain
         public CategoriaNome Nome { get; private set; }
         public Descricao Descricao { get; private set; }
         public DateTime DataCriacao { get; private set; }
-        public DateTime DataAtualizacao { get; private set; }
-        public Usuario? Usuario { get; private set; }
+        public DateTime? DataAtualizacao { get; private set; }
 
         private Categoria() { }
 
