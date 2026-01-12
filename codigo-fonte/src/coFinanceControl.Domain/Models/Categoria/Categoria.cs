@@ -13,7 +13,7 @@ namespace CoFinanceControl.Domain
 
         private Categoria() { }
 
-        public static Categoria Criar(Guid usuarioId, CategoriaNome nome, Descricao descricao)
+        public static Categoria CriarCategoria(Guid usuarioId, CategoriaNome nome, Descricao descricao)
         {
             return new Categoria
             {
@@ -25,7 +25,7 @@ namespace CoFinanceControl.Domain
             };
         }
 
-        public void Atualizar(CategoriaNome nome, Descricao descricao)
+        public void AtualizarCategoria(CategoriaNome nome, Descricao descricao)
         {
             Nome = nome;
             Descricao = descricao;

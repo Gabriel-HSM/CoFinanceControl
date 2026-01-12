@@ -19,7 +19,7 @@ public class Usuario
     private Usuario(){}
 
     //Usuario Guest, sem credencial e apenas testar o sistema
-    public static Usuario Criar(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento? dataNascimento, TipoPessoa tipoPessoa)
+    public static Usuario CriarUsuario(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento? dataNascimento, TipoPessoa tipoPessoa)
     {
         return new Usuario
         {
@@ -32,12 +32,12 @@ public class Usuario
         };
     }
 
-    public void Atualizar(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento? dataNascimento, TipoPessoa tipoPessoa)
+    //Duvida se preciso adicionar o guid do usuário pra que ele possa atualizar
+    public void AtualizarUsuario(PrimeiroNome nome, Sobrenome sobrenome, DataNascimento? dataNascimento)
     {
         Nome = nome;
         Sobrenome = sobrenome;
         DataNascimento = dataNascimento;
-        TipoPessoa = tipoPessoa;
         DataAtualizacao = DateTime.UtcNow;
     }
 
@@ -48,8 +48,7 @@ public class Usuario
             throw new InvalidOperationException("Já possui Conta");
         }
 
-        Credencial = Credencial.Criar(Id, email, senha);
+        Credencial = Credencial.CriarCredencial(Id, email, senha);
     }
 
-    //Adicionar Exclusão de conta no futuro
 }

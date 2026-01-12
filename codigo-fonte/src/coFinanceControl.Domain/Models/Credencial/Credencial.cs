@@ -12,7 +12,7 @@ namespace CoFinanceControl.Domain
 
         private Credencial() { }
 
-        public static Credencial Criar(Guid usuarioId, Email email, Senha senha)
+        public static Credencial CriarCredencial(Guid usuarioId, Email email, Senha senha)
         {
             return new Credencial
             {

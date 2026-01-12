@@ -24,7 +24,9 @@ namespace CoFinanceControl.Domain.Models.Usuario.ValueObjects
 
             Valor = valor;
         }
+        //Mostrar o valor quando chamar o objeto
         public override string ToString() => Valor;
+        //OPeração implicita que irei entender melhor no futuro
         public static implicit operator string(PrimeiroNome primeiroNome) => primeiroNome.Valor;
         
     }
