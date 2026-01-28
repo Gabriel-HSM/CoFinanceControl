@@ -1,5 +1,6 @@
 using CoFinanceControl.Application.Usuarios.DTOs;
 using CoFinanceControl.Application.Usuarios.Repositories;
+using CoFinanceControl.Domain.Models.Usuario;
 using CoFinanceControl.Domain.Models.Usuario.ValueObects;
 
 namespace CoFinanceControl.Application.Usuarios.Services
@@ -20,11 +21,70 @@ namespace CoFinanceControl.Application.Usuarios.Services
             //Converte dados do DTO para VOs
             var nome = new PrimeiroNome(dto.Nome);
             var sobrenome = new Sobrenome(dto.Sobrenome);
-            DataNascimento? dataNascimento = dto.DataNascimento.
-                ? new DataNascimento(dto.DataNascimento)
+            DataNascimento? dataNascimento = dto.DataNascimento.HasValue
+                ? new DataNascimento(dto.DataNascimento.Value)
                 : null;
 
 
+            //Cria o usuario
+            var usuario = Usuario.Criar(nome, sobrenome, dataNascimento);
+
+            //"Adiciona no banco"
+            await _usuarioRepository.AdicionarAsync(usuario, cancellationToken);
+
+            //retorna DTO mapeado
+            return MapearParaDto(usuario);
+        }
+
+        public async Task<UsuarioDto?> ObterPorIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            var usuario = await _usuarioRepository.ObterPorIdAsync(id, cancellationToken);
+            return usuario is not null ? MapearParaDto(usuario) : null;
+        }
+
+        public async Task<bool> AtualizarAsync(AtualizarUsuarioDto dto, CancellationToken cancellationToken = default)
+        {
+            var usuario = await _usuarioRepository.ObterPorIdAsync(dto.Id, cancellationToken);
+
+            if(usuario is null)
+            return false;
+
+            //atualização parcial se o campo não foi fornecido, mantem valor atual
+            var nome = !string.IsNullOrWhiteSpace(dto.Nome)
+                ? new PrimeiroNome(dto.Nome)
+                : usuario.Nome;
+
+            var sobrenome = !string.IsNullOrWhiteSpace(dto.Sobrenome)
+                ? new Sobrenome(dto.Sobrenome)
+                : usuario.Sobrenome;
+
+            DataNascimento? dataNascimento = dto.DataNascimento.HasValue
+                ? new DataNascimento(dto.DataNascimento.Value)
+                : usuario.DataNascimento;
+
+            usuario.Atualizar(nome, sobrenome, dataNascimento);
+
+            await _usuarioRepository.AtualizarAsync(usuario, cancellationToken);
+
+            return true;
+        }
+
+        public async Task<bool> DeletarAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            return await _usuarioRepository.DeletarAsync(id, cancellationToken);
+        }
+
+        private static UsuarioDto MapearParaDto(Usuario usuario)
+        {
+            return new UsuarioDto
+            {
+                Id = usuario.Id,
+                Nome = usuario.Nome,
+                Sobrenome = usuario.Sobrenome,
+                DataNascimento = usuario.DataNascimento?.Valor,
+                DataCriacao = usuario.DataCriacao,
+                DataAtualizacao = usuario.DataAtualizacao
+            };
         }
         
     }
