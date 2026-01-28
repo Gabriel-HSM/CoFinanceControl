@@ -5,4 +5,6 @@ Usuario:
 
 - adicionar Tipo pessoa (pf e pj)
 
+- adicionar dataCriação e dataAtualização
+
 Categoria:
