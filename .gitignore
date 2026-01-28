@@ -1,4 +1,4 @@
-# Build results - Assemblies
+# Build results - Assemblies (DDD Layers & All Projects)
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -11,8 +11,21 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
+obj/
 [Ll]og/
 [Ll]ogs/
+
+# Specific Debug folders in bin directory
+**/bin/Debug/
+**/bin/Release/
+**/obj/Debug/
+**/obj/Release/
+**/obj/
+
+# Auto-generated assembly files
+*.AssemblyInfo.cs
+*_AssemblyInfo.cs
+AssemblyInfo.cs
 
 # Visual Studio temporary files and directories
 .vs/
