@@ -8,8 +8,7 @@ namespace CoFinanceControl.Domain.Models.Usuario
         public int Id { get; private set; }
         public PrimeiroNome Nome { get; private set; }
         public Sobrenome Sobrenome { get; private set; }
-        
-
+        public DataNascimento DataNascimento { get; private set; }
         
     }
 }
