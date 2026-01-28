@@ -1,0 +1,64 @@
+# Build results - Assemblies
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio temporary files and directories
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Build folders
+artifacts/
+packages/
+
+# .NET
+project.lock.json
+project.fragment.lock.json
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.rsuser
+
+# Presentation and documentation temp files
+apresentacao/**/*.tmp
+apresentacao/**/*.bak
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
