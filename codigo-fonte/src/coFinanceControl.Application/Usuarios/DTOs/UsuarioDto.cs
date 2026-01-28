@@ -11,7 +11,7 @@ namespace CoFinanceControl.Application.Usuarios.DTOs
         public required Guid Id { get; init; }
         public required string Nome { get; init; }
         public required string Sobrenome { get; init; }
-        public required DateOnly? DataNascimento { get; init; }
+        public DateOnly? DataNascimento { get; init; }
         public required DateTime DataCriacao { get; init; }
         public required DateTime DataAtualizacao { get; init; }
     }
