@@ -3,7 +3,7 @@ using CoFinanceControl.Application.Usuarios.DTOs;
 namespace CoFinanceControl.Application.Usuarios.Services
 {
     //Validar regras de negocio
-    //O que o usuario pode fazer
+    //O que meu sistema precisa permitir que alguém faça?
     public interface IUsuarioService
     {
         Task<UsuarioDto> CriarAsync (CriarUsuarioDto dto, CancellationToken cancellationToken = default);

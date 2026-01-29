@@ -3,6 +3,8 @@ using CoFinanceControl.Application.Usuarios.Repositories;
 using CoFinanceControl.Domain.Models.Usuario;
 using CoFinanceControl.Domain.Models.Usuario.ValueObects;
 
+//O que meu sistema precisa permitir que alguém faça?
+
 namespace CoFinanceControl.Application.Usuarios.Services
 {
     public sealed class UsuarioService : IUsuarioService
