@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8V1UVPFQCJs=",
+  "dgSpecHash": "dyhgx9y4SpI=",
   "success": true,
   "projectFilePath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Api\\CoFinanceControl.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,13 @@
     "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.1\\microsoft.entityframeworkcore.abstractions.10.0.1.nupkg.sha512",
     "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.1\\microsoft.entityframeworkcore.analyzers.10.0.1.nupkg.sha512",
     "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\10.0.1\\microsoft.entityframeworkcore.inmemory.10.0.1.nupkg.sha512",
-    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.1\\microsoft.entityframeworkcore.relational.10.0.1.nupkg.sha512"
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.1\\microsoft.entityframeworkcore.relational.10.0.1.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.extensions.apidescription.server\\10.0.0\\microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.openapi\\2.3.0\\microsoft.openapi.2.3.0.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.0\\swashbuckle.aspnetcore.10.1.0.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.0\\swashbuckle.aspnetcore.swagger.10.1.0.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.0\\swashbuckle.aspnetcore.swaggergen.10.1.0.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.0\\swashbuckle.aspnetcore.swaggerui.10.1.0.nupkg.sha512"
   ],
   "logs": []
 }
