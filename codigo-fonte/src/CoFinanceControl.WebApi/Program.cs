@@ -1,10 +1,15 @@
+using CoFinanceControl.Application.Usuarios.Repositories;
+using CoFinanceControl.Application.Usuarios.Services;
+using CoFinanceControl.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers();
+
 //Swagger
-builder.Services;
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddControllers();
 //Registrar App + infra
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>(); 

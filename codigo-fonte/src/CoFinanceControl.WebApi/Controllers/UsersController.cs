@@ -1,3 +1,5 @@
+using CoFinanceControl.Application.Usuarios.DTOs;
+using CoFinanceControl.Application.Usuarios.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoFinanceControl.WebApi.Controllers
@@ -6,13 +8,18 @@ namespace CoFinanceControl.WebApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CriarUsuarioDto dto, CancellationToken ct = default)
+        private readonly IUsuarioService _service;
+
+        public UsersController(IUsuarioService service)
         {
-            var usuario = await _service.CriarAsync(dto, ct);
-            // retorna 201 com Location para GET by id
-            return CreatedAtAction(nameof(GetById), new { id = usuario.Id }, usuario);
+            _service = service;
+        }   
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CriarUsuarioDto dto, CancellationToken cancellationToken = default)
+        {
+            var usuario = await _service.CriarAsync (dto, cancellationToken);
+            return Created("", usuario);
         }
         
     }
