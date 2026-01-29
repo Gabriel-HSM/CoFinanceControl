@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoFinanceControl.Infrastructure\CoFinanceControl.Infrastructure.csproj" />
+    <ProjectReference Include="..\CoFinanceControl.Application\CoFinanceControl.Application.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
