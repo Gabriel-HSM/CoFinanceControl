@@ -1,20 +1,14 @@
-using CoFinanceControl.Application.Usuarios.Repositories;
 using CoFinanceControl.Application.Usuarios.Services;
-using CoFinanceControl.Infrastructure.Data;
-using CoFinanceControl.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
+using CoFinanceControl.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-//Conexão com banco
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<CoFinanceDbContext>(options => options.UseNpgsql(connectionString));
-
-//Registrar App + infra
+//Registrar App
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>(); 
+//Registrar Infra
+builder.Services.AddInfrastructure(builder.Configuration);
 
 //Swagger
 builder.Services.AddEndpointsApiExplorer();
