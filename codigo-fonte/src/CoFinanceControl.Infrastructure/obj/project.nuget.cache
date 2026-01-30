@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6Db3ZKm4Sfk=",
+  "dgSpecHash": "sMRYhT9Wbco=",
   "success": true,
   "projectFilePath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Infrastructure\\CoFinanceControl.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,8 @@
     "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.extensions.logging\\10.0.1\\microsoft.extensions.logging.10.0.1.nupkg.sha512",
     "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.1\\microsoft.extensions.logging.abstractions.10.0.1.nupkg.sha512",
     "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.extensions.options\\10.0.1\\microsoft.extensions.options.10.0.1.nupkg.sha512",
-    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.1\\microsoft.extensions.primitives.10.0.1.nupkg.sha512"
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.1\\microsoft.extensions.primitives.10.0.1.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\npgsql\\10.0.1\\npgsql.10.0.1.nupkg.sha512"
   ],
   "logs": []
 }
