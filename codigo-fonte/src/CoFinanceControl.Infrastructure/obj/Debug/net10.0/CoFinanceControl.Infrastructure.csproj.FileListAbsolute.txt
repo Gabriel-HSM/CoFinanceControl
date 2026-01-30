@@ -16,3 +16,5 @@ C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Infrastructure\ob
 C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Infrastructure\obj\Debug\net10.0\refint\CoFinanceControl.Infrastructure.dll
 C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Infrastructure\obj\Debug\net10.0\CoFinanceControl.Infrastructure.pdb
 C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Infrastructure\obj\Debug\net10.0\ref\CoFinanceControl.Infrastructure.dll
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Infrastructure\bin\Debug\net10.0\CoFinanceControl.Infrastructure.runtimeconfig.json
+C:\Projetos\CoFinanceControl\codigo-fonte\src\CoFinanceControl.Infrastructure\obj\Debug\net10.0\CoFinanceControl.Infrastructure.genruntimeconfig.cache
