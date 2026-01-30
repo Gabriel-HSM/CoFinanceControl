@@ -416,10 +416,281 @@
           }
         },
         "contentFiles": {
-          "contentFiles/any/any/_._": {
-            "buildAction": "None",
+          "contentFiles/any/any/BuildHost-net472/Microsoft.Build.Locator.dll": {
+            "buildAction": "Content",
             "codeLanguage": "any",
-            "copyToOutput": false
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/Microsoft.Build.Locator.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe"
+          },
+          "contentFiles/any/any/BuildHost-net472/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config"
+          },
+          "contentFiles/any/any/BuildHost-net472/Microsoft.IO.Redist.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/Microsoft.IO.Redist.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/Newtonsoft.Json.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/Newtonsoft.Json.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/System.Buffers.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/System.Buffers.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/System.Collections.Immutable.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/System.Collections.Immutable.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/System.CommandLine.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/System.CommandLine.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/System.Memory.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/System.Memory.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/System.Numerics.Vectors.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/System.Numerics.Vectors.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/System.Runtime.CompilerServices.Unsafe.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/System.Runtime.CompilerServices.Unsafe.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/System.Threading.Tasks.Extensions.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/System.Threading.Tasks.Extensions.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/cs/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/cs/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/de/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/de/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/es/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/es/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/fr/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/fr/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/it/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/it/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/ja/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/ja/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/ko/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/ko/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/pl/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/pl/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/pt-BR/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/pt-BR/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/ru/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/ru/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/tr/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/tr/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/zh-Hans/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/zh-Hans/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-net472/zh-Hant/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-net472/zh-Hant/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/Microsoft.Build.Locator.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/Microsoft.Build.Locator.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.deps.json": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.deps.json"
+          },
+          "contentFiles/any/any/BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll.config": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll.config"
+          },
+          "contentFiles/any/any/BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.runtimeconfig.json": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.runtimeconfig.json"
+          },
+          "contentFiles/any/any/BuildHost-netcore/Newtonsoft.Json.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/Newtonsoft.Json.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/System.Collections.Immutable.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/System.Collections.Immutable.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/System.CommandLine.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/System.CommandLine.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/cs/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/cs/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/de/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/de/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/es/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/es/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/fr/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/fr/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/it/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/it/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/ja/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/ja/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/ko/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/ko/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/pl/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/pl/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/pt-BR/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/pt-BR/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/ru/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/ru/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/tr/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/tr/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/zh-Hans/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/zh-Hans/System.CommandLine.resources.dll"
+          },
+          "contentFiles/any/any/BuildHost-netcore/zh-Hant/System.CommandLine.resources.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "BuildHost-netcore/zh-Hant/System.CommandLine.resources.dll"
           }
         }
       },
@@ -3398,6 +3669,7 @@
       "CoFinanceControl.Application >= 1.0.0",
       "CoFinanceControl.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 10.0.1",
+      "Microsoft.EntityFrameworkCore.Design >= 10.0.1",
       "Microsoft.EntityFrameworkCore.InMemory >= 10.0.1",
       "Microsoft.EntityFrameworkCore.Relational >= 10.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 10.0.1",
@@ -3455,6 +3727,12 @@
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[10.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
             "target": "Package",
             "version": "[10.0.1, )"
           },
