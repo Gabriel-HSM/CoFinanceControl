@@ -16,11 +16,18 @@ namespace CoFinanceControl.WebApi.Controllers
         }   
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CriarUsuarioDto dto, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> CriarUsuario([FromBody] CriarUsuarioDto dto, CancellationToken cancellationToken = default)
         {
             var usuario = await _service.CriarAsync (dto, cancellationToken);
             return Created("", usuario);
         }
-        
+
+        [HttpGet]
+        public async Task<IActionResult> ObterUsuarioId([FromRoute] Guid id, CancellationToken cancellationToken = default)
+        {
+            var usuario = await _service.ObterPorIdAsync(id, cancellationToken);
+            
+            return Ok(usuario);
+        }
     }
 }
