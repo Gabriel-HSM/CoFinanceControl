@@ -22,11 +22,30 @@ namespace CoFinanceControl.WebApi.Controllers
             return Created("", usuario);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> ObterUsuarioId([FromRoute] Guid id, CancellationToken cancellationToken = default)
         {
             var usuario = await _service.ObterPorIdAsync(id, cancellationToken);
             
+            return Ok(usuario);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarUsuario(
+            [FromRoute] Guid id,
+            [FromBody] AtualizarUsuarioDto dto,
+            [FromServices]IUsuarioService usuarioService,
+            CancellationToken cancellationToken = default)
+        {
+            var usuarioAtualizado = await usuarioService.AtualizarAsync(id, dto, cancellationToken);
+
+            return Ok(usuarioAtualizado);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ObterTodosUsuariosAsync (CancellationToken cancellationToken = default)
+        {
+            var usuario = await _service.ObterTodosAsync(cancellationToken);
             return Ok(usuario);
         }
     }

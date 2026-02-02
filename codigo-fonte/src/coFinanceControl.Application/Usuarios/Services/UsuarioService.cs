@@ -45,9 +45,9 @@ namespace CoFinanceControl.Application.Usuarios.Services
             return usuario is not null ? MapearParaDto(usuario) : null;
         }
 
-        public async Task<bool> AtualizarAsync(AtualizarUsuarioDto dto, CancellationToken cancellationToken = default)
+        public async Task<bool> AtualizarAsync(Guid id, AtualizarUsuarioDto dto, CancellationToken cancellationToken = default)
         {
-            var usuario = await _usuarioRepository.ObterPorIdAsync(dto.Id, cancellationToken);
+            var usuario = await _usuarioRepository.ObterPorIdAsync(id, cancellationToken);
 
             if(usuario is null)
             return false;
