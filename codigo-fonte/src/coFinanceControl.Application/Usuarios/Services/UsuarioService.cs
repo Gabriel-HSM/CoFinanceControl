@@ -1,7 +1,6 @@
 using CoFinanceControl.Application.Usuarios.DTOs;
 using CoFinanceControl.Application.Usuarios.Repositories;
 using CoFinanceControl.Domain.Models.Usuario;
-using System.Linq;
 using CoFinanceControl.Domain.Models.Usuario.ValueObects;
 
 //O que meu sistema precisa permitir que alguém faça?

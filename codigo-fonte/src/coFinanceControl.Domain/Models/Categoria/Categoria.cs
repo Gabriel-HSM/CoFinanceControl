@@ -23,17 +23,19 @@ namespace CoFinanceControl.Domain.Models.Categoria
                 Nome = nome,
                 Descricao = descricao,
                 isSistema = true,
+                UsuarioId = null,
                 DataCriacao = DateTime.UtcNow
             };
         }
 
-        public static Categoria CriarCategoriaUser(CategoriaNome nome, CategoriaDescricao descricao)
+        public static Categoria CriarCategoriaUser(CategoriaNome nome, CategoriaDescricao descricao, Guid usuarioId)
         {
             return new Categoria
             {
                 Nome = nome,
                 Descricao = descricao,
                 isSistema = false,
+                UsuarioId = usuarioId,
                 DataCriacao = DateTime.UtcNow
             };
         }
