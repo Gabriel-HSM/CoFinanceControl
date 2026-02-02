@@ -19,7 +19,7 @@ namespace CoFinanceControl.WebApi.Controllers
         public async Task<IActionResult> CriarUsuario([FromBody] CriarUsuarioDto dto, CancellationToken cancellationToken = default)
         {
             var usuario = await _service.CriarAsync (dto, cancellationToken);
-            return Created("", usuario);
+            return CreatedAtAction(nameof(ObterUsuarioId), new {id = usuario.Id}, usuario);
         }
 
         [HttpGet("{id}")]
@@ -43,14 +43,14 @@ namespace CoFinanceControl.WebApi.Controllers
             [FromBody] AtualizarUsuarioDto dto,
             CancellationToken cancellationToken = default)
         {
-            var usuarioAtualizado = await _service.AtualizarAsync(id, dto, cancellationToken);
+            var atualizado = await _service.AtualizarAsync(id, dto, cancellationToken);
 
-            if (_service.ObterPorIdAsync(id) == null)
+            if (atualizado is null)
             {
                 return NotFound();
             }
 
-            return Ok(usuarioAtualizado);
+            return Ok(atualizado);
         }
 
         [HttpDelete("{id}")]
@@ -58,8 +58,8 @@ namespace CoFinanceControl.WebApi.Controllers
             [FromRoute] Guid id,
             CancellationToken cancellationToken = default)
         {
-            await _service.DeletarAsync(id, cancellationToken);
-            if (_service.ObterPorIdAsync(id) == null)
+            var deletado = await _service.DeletarAsync(id, cancellationToken);
+            if (!deletado)
             {
                 return NotFound();
             }

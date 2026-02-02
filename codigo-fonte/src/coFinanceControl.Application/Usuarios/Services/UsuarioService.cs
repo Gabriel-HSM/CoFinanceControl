@@ -45,12 +45,13 @@ namespace CoFinanceControl.Application.Usuarios.Services
             return usuario is not null ? MapearParaDto(usuario) : null;
         }
 
-        public async Task<bool> AtualizarAsync(Guid id, AtualizarUsuarioDto dto, CancellationToken cancellationToken = default)
+        public async Task<UsuarioDto?> AtualizarAsync(Guid id, AtualizarUsuarioDto dto, CancellationToken cancellationToken = default)
         {
             var usuario = await _usuarioRepository.ObterPorIdAsync(id, cancellationToken);
 
-            if(usuario is null)
-            return false;
+            if(usuario is null){
+                return null;
+            }
 
             //atualização parcial se o campo não foi fornecido, mantem valor atual
             var nome = !string.IsNullOrWhiteSpace(dto.Nome)
@@ -69,7 +70,7 @@ namespace CoFinanceControl.Application.Usuarios.Services
 
             await _usuarioRepository.AtualizarAsync(usuario, cancellationToken);
 
-            return true;
+            return MapearParaDto(usuario);
         }
 
         public async Task<bool> DeletarAsync(Guid id, CancellationToken cancellationToken = default)
