@@ -8,8 +8,8 @@ namespace CoFinanceControl.Domain.Models.Categoria
         public int Id { get; private set; }
         public Guid? UsuarioId { get; private set;}
         public CategoriaNome Nome { get; private set; }
-        public string? Icone { get; private set; }
         public CategoriaDescricao Descricao { get; private set; }
+        public string? Icone { get; private set; }
         public bool isSistema { get; private set; }
         public DateTime DataCriacao { get; private set; }
         public DateTime DataAtualizacao { get; private set; }
@@ -43,7 +43,6 @@ namespace CoFinanceControl.Domain.Models.Categoria
             Nome = nome;
             Descricao = descricao;
             DataAtualizacao = DateTime.UtcNow;
-
         }
     }
 }
