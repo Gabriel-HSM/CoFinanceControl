@@ -42,6 +42,13 @@ namespace CoFinanceControl.WebApi.Controllers
             return Ok(usuarioAtualizado);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarUsuario([FromRoute] Guid id, CancellationToken cancellationToken = default)
+        {
+            var usuario = await _service.DeletarAsync(id, cancellationToken);
+            return NoContent();
+        }
+
         [HttpGet]
         public async Task<IActionResult> ObterTodosUsuariosAsync (CancellationToken cancellationToken = default)
         {
