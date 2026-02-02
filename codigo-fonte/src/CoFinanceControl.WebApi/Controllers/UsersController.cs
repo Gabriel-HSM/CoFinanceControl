@@ -23,9 +23,16 @@ namespace CoFinanceControl.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> ObterUsuarioId([FromRoute] Guid id, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> ObterUsuarioId(
+            [FromRoute] Guid id, 
+            CancellationToken cancellationToken = default)
         {
             var usuario = await _service.ObterPorIdAsync(id, cancellationToken);
+
+            if (usuario is null)
+            {
+                return NotFound();
+            }
             
             return Ok(usuario);
         }
@@ -34,18 +41,29 @@ namespace CoFinanceControl.WebApi.Controllers
         public async Task<IActionResult> AtualizarUsuario(
             [FromRoute] Guid id,
             [FromBody] AtualizarUsuarioDto dto,
-            [FromServices]IUsuarioService usuarioService,
             CancellationToken cancellationToken = default)
         {
-            var usuarioAtualizado = await usuarioService.AtualizarAsync(id, dto, cancellationToken);
+            var usuarioAtualizado = await _service.AtualizarAsync(id, dto, cancellationToken);
+
+            if (_service.ObterPorIdAsync(id) == null)
+            {
+                return NotFound();
+            }
 
             return Ok(usuarioAtualizado);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletarUsuario([FromRoute] Guid id, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> DeletarUsuario(
+            [FromRoute] Guid id,
+            CancellationToken cancellationToken = default)
         {
-            var usuario = await _service.DeletarAsync(id, cancellationToken);
+            await _service.DeletarAsync(id, cancellationToken);
+            if (_service.ObterPorIdAsync(id) == null)
+            {
+                return NotFound();
+            }
+
             return NoContent();
         }
 
