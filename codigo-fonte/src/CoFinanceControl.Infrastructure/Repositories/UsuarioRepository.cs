@@ -17,7 +17,7 @@ namespace CoFinanceControl.Infrastructure.Repositories
 
         public async Task AdicionarAsync(Usuario usuario, CancellationToken cancellationToken = default)
         {
-            await _context.Usuarios.AddAsync(usuario, cancellationToken = default);
+            await _context.Usuarios.AddAsync(usuario, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
         }
 
@@ -43,6 +43,13 @@ namespace CoFinanceControl.Infrastructure.Repositories
             _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync(cancellationToken);
             return true;
+        }
+
+        public async Task<IEnumerable<Usuario>> ObterTodosAsync (CancellationToken cancellationToken)
+        {
+            return await _context.Usuarios
+                .AsNoTracking()
+                .ToListAsync(cancellationToken);
         }
     }
 }

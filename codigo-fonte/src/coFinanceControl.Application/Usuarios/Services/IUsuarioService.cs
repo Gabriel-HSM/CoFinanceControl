@@ -14,6 +14,7 @@ namespace CoFinanceControl.Application.Usuarios.Services
 
         Task<bool> DeletarAsync (Guid id, CancellationToken cancellationToken = default);
 
+        Task<IEnumerable<UsuarioDto>> ObterTodosAsync (CancellationToken cancellationToken = default);
         
     }
 }

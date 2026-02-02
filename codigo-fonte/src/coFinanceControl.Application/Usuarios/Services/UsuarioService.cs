@@ -1,6 +1,7 @@
 using CoFinanceControl.Application.Usuarios.DTOs;
 using CoFinanceControl.Application.Usuarios.Repositories;
 using CoFinanceControl.Domain.Models.Usuario;
+using System.Linq;
 using CoFinanceControl.Domain.Models.Usuario.ValueObects;
 
 //O que meu sistema precisa permitir que alguém faça?
@@ -74,6 +75,12 @@ namespace CoFinanceControl.Application.Usuarios.Services
         public async Task<bool> DeletarAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return await _usuarioRepository.DeletarAsync(id, cancellationToken);
+        }
+
+        public async Task<IEnumerable<UsuarioDto>> ObterTodosAsync (CancellationToken cancellationToken = default)
+        {
+            var usuarios = await _usuarioRepository.ObterTodosAsync(cancellationToken);
+            return usuarios.Select(MapearParaDto).ToList();
         }
 
         private static UsuarioDto MapearParaDto(Usuario usuario)

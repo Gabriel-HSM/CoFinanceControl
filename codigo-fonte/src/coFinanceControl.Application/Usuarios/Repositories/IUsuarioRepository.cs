@@ -14,5 +14,7 @@ namespace CoFinanceControl.Application.Usuarios.Repositories
         Task AtualizarAsync(Usuario usuario, CancellationToken cancellationToken = default);
 
         Task<bool> DeletarAsync (Guid id, CancellationToken cancellationToken = default);
+
+        Task<IEnumerable<Usuario>> ObterTodosAsync (CancellationToken cancellationToken = default);
     }
 }
