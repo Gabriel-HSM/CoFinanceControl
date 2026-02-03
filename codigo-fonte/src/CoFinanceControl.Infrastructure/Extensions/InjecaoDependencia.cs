@@ -1,3 +1,4 @@
+using CoFinanceControl.Application.Categorias.Repositories;
 using CoFinanceControl.Application.Usuarios.Repositories;
 using CoFinanceControl.Infrastructure.Data;
 using CoFinanceControl.Infrastructure.Repositories;
@@ -15,6 +16,7 @@ namespace CoFinanceControl.Infrastructure.Extensions
             services.AddDbContext<CoFinanceDbContext>(options => options.UseNpgsql(connectionString));
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
             return services;
         }

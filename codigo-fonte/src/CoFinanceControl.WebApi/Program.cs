@@ -1,3 +1,4 @@
+using CoFinanceControl.Application.Categorias.Services;
 using CoFinanceControl.Application.Usuarios.Services;
 using CoFinanceControl.Infrastructure.Extensions;
 
@@ -7,6 +8,7 @@ builder.Services.AddControllers();
 
 //Registrar App
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 //Registrar Infra
 builder.Services.AddInfrastructure(builder.Configuration);
 
