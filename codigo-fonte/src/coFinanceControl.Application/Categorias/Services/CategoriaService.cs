@@ -1,6 +1,5 @@
 using CoFinanceControl.Application.Categorias.DTOs;
 using CoFinanceControl.Application.Categorias.Repositories;
-using CoFinanceControl.Application.Usuarios.DTOs;
 using CoFinanceControl.Domain.Models.Categoria;
 using CoFinanceControl.Domain.Models.Categoria.ValueObjects;
 
@@ -33,20 +32,54 @@ namespace CoFinanceControl.Application.Categorias.Services
             return MapearParaDto(categoria);
         }
 
-        public async Task<CategoriaDto> ObterPorIdAsync (int id, CancellationToken ct = default)
+        public async Task<CategoriaDto?> ObterPorIdAsync (int id, CancellationToken ct = default)
         {
             var categoria = await _categoriaRepository.ObterPorIdAsync(id, ct);
             return categoria is not null ? MapearParaDto(categoria) : null;
         }
 
-        public async Task<UsuarioDto> AtualizarAsync(int id, CancellationToken ct = default)
+        public async Task<CategoriaDto?> AtualizarAsync (int id, AtualizarCategoriaDto dto, CancellationToken ct = default)
         {
-            var categoria = _categoriaRepository.ObterPorIdAsync(id, ct);
+            var categoria = await _categoriaRepository.ObterPorIdAsync(id, ct);
+
+            if (categoria is null){
+                return null;
+            }
+
+           //Atualização parcial
+           var nome = !string.IsNullOrWhiteSpace(dto.Nome)
+            ? new CategoriaNome(dto.Nome)
+            : categoria.Nome;
+
+            var descricao = !string.IsNullOrWhiteSpace(dto.Descricao)
+                ? new CategoriaDescricao(dto.Descricao)
+                : categoria.Descricao;
+
+            categoria.Atualizar(nome, descricao);
+
+            await _categoriaRepository.AtualizarAsync(categoria, ct);
+            
+            return MapearParaDto(categoria);
+        }
+
+        public async Task<bool> DeletarAsync(int id, CancellationToken ct = default)
+        {
+            var categoria = await ObterPorIdAsync(id);
 
             if (categoria is null)
-            return null;
+            {
+                return false;
+            }
 
-           
+            await _categoriaRepository.DeletarAsync(id, ct);
+
+            return true;
+        }
+
+        public async Task<IEnumerable<CategoriaDto>> ObterTodosAsync (CancellationToken ct = default)
+        {
+           var categoria = await _categoriaRepository.ObterTodosAsync(ct);
+           return categoria.Select(MapearParaDto).ToList();
         }
 
         private static CategoriaDto MapearParaDto(Categoria categoria)
