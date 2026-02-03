@@ -1,3 +1,5 @@
+using CoFinanceControl.Domain.Models.Categoria;
+using CoFinanceControl.Domain.Models.Categoria.ValueObjects;
 using CoFinanceControl.Domain.Models.Usuario;
 using CoFinanceControl.Domain.Models.Usuario.ValueObects;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +12,10 @@ namespace CoFinanceControl.Infrastructure.Data
         {
         }
 
-        //Criação da tabela usuarios
+        //Criação das tabelas
         public DbSet<Usuario> Usuarios => Set<Usuario>();
+        public DbSet<Categoria> Categorias => Set<Categoria>();
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -48,6 +52,46 @@ namespace CoFinanceControl.Infrastructure.Data
 
                 entity.Property(u => u.DataAtualizacao);
 
+            });
+
+            modelBuilder.Entity<Categoria>(entity =>
+            {
+                entity.HasKey(c => c.Id);
+
+                entity.HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(c => c.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict)//Impede que exlua caso usuario tenha categorias
+                .IsRequired(false); //permite nulo
+
+                entity.Property(c => c.Nome)
+                .HasConversion(
+                    nome => nome.Valor,
+                    valor => new CategoriaNome(valor))
+                .HasMaxLength(100)
+                .IsRequired();
+
+                entity.Property(c => c.Descricao)
+                .HasConversion(
+                    descricao => descricao.Valor,
+                    valor => new CategoriaDescricao(valor))
+                .HasMaxLength(255)
+                .IsRequired();
+
+                entity.Property(c => c.isSistema)
+                .IsRequired()
+                .HasDefaultValue(false);
+
+                entity.Property(c => c.Icone)
+                .HasMaxLength(60);
+
+                entity.Property(c => c.DataCriacao)
+                .IsRequired();
+
+                entity.Property(c => c.DataAtualizacao);
+
+                entity.HasIndex(c => c.UsuarioId);
+                
             });
         }
     }
