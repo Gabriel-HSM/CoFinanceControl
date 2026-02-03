@@ -2,8 +2,12 @@ indice:
 ? = duvida de implementação
 ! = importante
 - = lista
+* = topicos futuros
 
 Futuras implementações para:
+
+* Autentificação
+* Relatórios
 
 Usuario:
 - validação se tem caracter especial em Nome e sobrenome
