@@ -6,7 +6,7 @@ namespace CoFinanceControl.Domain.Models.Transacao
     {
         public int Id { get; private set; }
         public Guid UsuarioId { get; private set; }
-        public Valor ValorTotal { get; private set; }
+        public TransacaoValor ValorTotal { get; private set; }
         public TransacaoDescricao Descricao { get; private set; }
         public DateTime DataCriacao { get; private set; }
         public DateTime DataAtualizacao { get; private set; }
