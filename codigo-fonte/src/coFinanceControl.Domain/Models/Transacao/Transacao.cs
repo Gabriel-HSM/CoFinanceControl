@@ -1,4 +1,5 @@
 using CoFinanceControl.Domain.Models.Transacao.ValueObjects;
+using CoFinanceControl.Domain.Models.Rateios;
 
 namespace CoFinanceControl.Domain.Models.Transacao
 {
@@ -10,9 +11,44 @@ namespace CoFinanceControl.Domain.Models.Transacao
         public TransacaoDescricao Descricao { get; private set; }
         public DateTime DataCriacao { get; private set; }
         public DateTime DataAtualizacao { get; private set; }
+        private readonly List<Rateio> _rateios = new();
+        public IReadOnlyCollection<Rateio> Rateios => _rateios;
 
         private Transacao(){}
 
-        // public static Transacao Criar(){}
+        public static Transacao Criar(Guid usuarioId, TransacaoValor valor, TransacaoDescricao descricao)
+        {
+            return new Transacao
+            {
+                UsuarioId = usuarioId,
+                ValorTotal = valor,
+                Descricao = descricao,
+                DataCriacao = DateTime.UtcNow
+            };
+        }
+
+        public static Transacao Atualizar(TransacaoValor valor, TransacaoDescricao descricao)
+        {
+            return new Transacao
+            {
+                ValorTotal = valor,
+                Descricao = descricao,
+                DataAtualizacao = DateTime.UtcNow
+            };
+        }
+
+        public void DefinirRateios(IEnumerable<(int transacaoId, int categoriaId, ValorRateio valor)> rateios)
+        {
+            _rateios.Clear();
+
+            foreach (var r in rateios)
+            {
+                _rateios.Add(new Rateio(
+                    transacaoId: Id,
+                    categoriaId: r.categoriaId,
+                    valor: r.valor
+                ));
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-namespace CoFinanceControl.Domain.Models.Rateio
+namespace CoFinanceControl.Domain.Models.Rateios
 {
     public sealed class Rateio
     {
