@@ -15,6 +15,9 @@ Usuario:
 - validação se possui numeros (verificando se faz sentido)
 
 Categoria:
-- validação se tem caracter especial em Nome e sobrenome
+- validação se tem caracter especial em Nome
 - validação se possui numeros (verificando se faz sentido)
 - obter usuario por categoria?
+
+Transacao:
+- validações extras em Valor, a que possui agora acredito ser insuficiente
