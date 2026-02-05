@@ -1,6 +1,7 @@
 using CoFinanceControl.Application.Rateios.DTOs;
 using CoFinanceControl.Application.Transacoes.DTOs;
 using CoFinanceControl.Application.Transacoes.Repositories;
+using CoFinanceControl.Domain.Models.Rateios;
 using CoFinanceControl.Domain.Models.Transacao;
 using CoFinanceControl.Domain.Models.Transacao.ValueObjects;
 
@@ -17,14 +18,18 @@ namespace CoFinanceControl.Application.Transacoes.Services
 
         public async Task<TransacaoDto> CriarAsync (CriarTransacaoDto dto, CancellationToken ct = default)
         {
-           var valorTotal = new TransacaoValor(dto.ValorTotal);
-           var descricao = new TransacaoDescricao(dto.Descricao);
+            var valorTotal = new TransacaoValor(dto.ValorTotal);
+            var descricao = new TransacaoDescricao(dto.Descricao);
+            var rateios = dto.Rateios
+                .Select(rateioDto => (rateioDto.CategoriaId, new ValorRateio(rateioDto.Valor)))
+                .ToList();
 
-           var transacao = Transacao.Criar(dto.UsuarioId, valorTotal, descricao);
+            var transacao = Transacao.Criar(dto.UsuarioId, valorTotal, descricao);
+            transacao.DefinirRateios(rateios);
 
-           await _transacaoRepository.AdicionarAsync(transacao, ct);
+            await _transacaoRepository.AdicionarAsync(transacao, ct);
 
-           return MapearParaDto(transacao);
+            return MapearParaDto(transacao);
         }
 
         public async Task<TransacaoDto?> ObterAsync (int id, CancellationToken ct = default)
@@ -41,6 +46,9 @@ namespace CoFinanceControl.Application.Transacoes.Services
         public async Task<TransacaoDto?> AtualizarAsync (int id, AtualizarTransacaoDto dto, CancellationToken ct = default)
         {
             var transacao = await _transacaoRepository.ObterPorIdAsync(id, ct);
+            var rateios = dto.Rateios
+                .Select(rateioDto => (rateioDto.CategoriaId, new ValorRateio(rateioDto.Valor)))
+                .ToList();
 
             if (transacao is null)
             return null;
@@ -54,6 +62,7 @@ namespace CoFinanceControl.Application.Transacoes.Services
                 : transacao.Descricao;
 
             transacao.Atualizar(valorTotal, descricao);
+            transacao.DefinirRateios(rateios);
 
             await _transacaoRepository.AtualizarAsync(transacao, ct);
 

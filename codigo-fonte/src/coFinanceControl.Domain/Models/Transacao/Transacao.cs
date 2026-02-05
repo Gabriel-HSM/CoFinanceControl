@@ -35,7 +35,7 @@ namespace CoFinanceControl.Domain.Models.Transacao
             DataAtualizacao = DateTime.UtcNow;
         }
 
-        public void DefinirRateios(IEnumerable<(int transacaoId, int categoriaId, ValorRateio valor)> rateios)
+        public void DefinirRateios(IEnumerable<( int categoriaId, ValorRateio valor)> rateios)
         {
             _rateios.Clear();
 
