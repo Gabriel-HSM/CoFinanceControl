@@ -2,6 +2,7 @@ using CoFinanceControl.Domain.Models.Categoria;
 using CoFinanceControl.Domain.Models.Categoria.ValueObjects;
 using CoFinanceControl.Domain.Models.Rateios;
 using CoFinanceControl.Domain.Models.Transacao;
+using CoFinanceControl.Domain.Models.Transacao.ValueObjects;
 using CoFinanceControl.Domain.Models.Usuario;
 using CoFinanceControl.Domain.Models.Usuario.ValueObects;
 using Microsoft.EntityFrameworkCore;
@@ -58,6 +59,8 @@ namespace CoFinanceControl.Infrastructure.Data
 
             });
 
+            //Categoria
+
             modelBuilder.Entity<Categoria>(entity =>
             {
                 entity.HasKey(c => c.Id);
@@ -96,6 +99,69 @@ namespace CoFinanceControl.Infrastructure.Data
 
                 entity.HasIndex(c => c.UsuarioId);
                 
+            });
+
+            //Transação
+
+            modelBuilder.Entity<Transacao>(entity =>
+            {
+                entity.HasKey(t => t.Id);
+
+                entity.HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(t => t.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(t => t.UsuarioId)
+                .IsRequired();
+
+                entity.Property(t => t.ValorTotal)
+                .HasConversion(
+                    valorTotal => valorTotal.Valor,
+                    valor => new TransacaoValor(valor))
+                .HasColumnType("decimal(18,2)")
+                .IsRequired();
+
+                entity.Property(t => t.Descricao)
+                .HasConversion(
+                    descricao => descricao.Valor,
+                    valor => new TransacaoDescricao(valor))
+                .HasMaxLength(155)
+                .IsRequired();
+
+                entity.Property(t => t.DataCriacao)
+                .IsRequired();
+
+                entity.Property(t => t.DataAtualizacao)
+                .IsRequired();
+
+                entity.HasMany<Rateio>()
+                .WithOne()
+                .HasForeignKey(r => r.TransacaoId)
+                .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            //Rateios
+
+            modelBuilder.Entity<Rateio>(entity =>
+            {
+                entity.HasKey(r => r.Id);
+
+                entity.Property(r => r.TransacaoId)
+                .IsRequired();
+
+                entity.Property(r => r.CategoriaId)
+                .IsRequired();
+
+                entity.Property(r => r.Valor)
+                .HasConversion(
+                    valorR => valorR.Valor,
+                    valor => new ValorRateio(valor))
+                .HasColumnType("decimal(18,2)")
+                .IsRequired();
+
+                entity.HasIndex(r => r.TransacaoId);
+                entity.HasIndex(r => r.CategoriaId);
             });
         }
     }
