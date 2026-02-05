@@ -112,9 +112,6 @@ namespace CoFinanceControl.Infrastructure.Data
                 .HasForeignKey(t => t.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-                entity.Property(t => t.UsuarioId)
-                .IsRequired();
-
                 entity.Property(t => t.ValorTotal)
                 .HasConversion(
                     valorTotal => valorTotal.Valor,
@@ -132,8 +129,7 @@ namespace CoFinanceControl.Infrastructure.Data
                 entity.Property(t => t.DataCriacao)
                 .IsRequired();
 
-                entity.Property(t => t.DataAtualizacao)
-                .IsRequired();
+                entity.Property(t => t.DataAtualizacao);
 
                 entity.HasMany<Rateio>()
                 .WithOne()
