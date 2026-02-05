@@ -12,8 +12,11 @@ namespace CoFinanceControl.Infrastructure.Extensions
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<CoFinanceDbContext>(options => options.UseNpgsql(connectionString));
+            // var connectionString = configuration.GetConnectionString("DefaultConnection");
+            // services.AddDbContext<CoFinanceDbContext>(options => options.UseNpgsql(connectionString));
+
+
+            services.AddDbContext<CoFinanceDbContext>(options => options.UseInMemoryDatabase("InMemory"));
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
