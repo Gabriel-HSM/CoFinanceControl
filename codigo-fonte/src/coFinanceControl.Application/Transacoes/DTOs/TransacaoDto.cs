@@ -9,6 +9,7 @@ namespace CoFinanceControl.Application.Transacoes.DTOs
         public decimal ValorTotal { get; init; }
         public required string Descricao { get; init; }
         public DateTime DataCriacao { get; init; }
+        public DateTime DataAtualizacao { get; init; }
         public required List<RateioDto> Rateios { get; init; }
     }
 }
