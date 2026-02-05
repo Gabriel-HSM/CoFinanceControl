@@ -27,14 +27,12 @@ namespace CoFinanceControl.Domain.Models.Transacao
             };
         }
 
-        public static Transacao Atualizar(TransacaoValor valor, TransacaoDescricao descricao)
+        public void Atualizar(TransacaoValor valor, TransacaoDescricao descricao)
         {
-            return new Transacao
-            {
-                ValorTotal = valor,
-                Descricao = descricao,
-                DataAtualizacao = DateTime.UtcNow
-            };
+
+            ValorTotal = valor;
+            Descricao = descricao;
+            DataAtualizacao = DateTime.UtcNow;
         }
 
         public void DefinirRateios(IEnumerable<(int transacaoId, int categoriaId, ValorRateio valor)> rateios)

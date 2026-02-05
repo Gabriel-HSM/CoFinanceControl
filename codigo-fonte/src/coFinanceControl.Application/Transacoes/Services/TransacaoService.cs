@@ -53,6 +53,8 @@ namespace CoFinanceControl.Application.Transacoes.Services
                 ? new TransacaoDescricao(dto.Descricao)
                 : transacao.Descricao;
 
+            transacao.Atualizar(valorTotal, descricao);
+
             await _transacaoRepository.AtualizarAsync(transacao, ct);
 
             return MapearParaDto(transacao);
