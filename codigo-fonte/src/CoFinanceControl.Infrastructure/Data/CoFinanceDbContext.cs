@@ -149,6 +149,13 @@ namespace CoFinanceControl.Infrastructure.Data
                 entity.Property(r => r.CategoriaId)
                 .IsRequired();
 
+                entity.Property(r => r.Destino)
+                .HasConversion(
+                    destino => destino.Valor,
+                    valor => new DestinoRateio(valor))
+                .HasMaxLength(100)
+                .IsRequired();
+
                 entity.Property(r => r.Valor)
                 .HasConversion(
                     valorR => valorR.Valor,

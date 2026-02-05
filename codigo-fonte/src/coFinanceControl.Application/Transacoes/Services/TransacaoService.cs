@@ -21,7 +21,7 @@ namespace CoFinanceControl.Application.Transacoes.Services
             var valorTotal = new TransacaoValor(dto.ValorTotal);
             var descricao = new TransacaoDescricao(dto.Descricao);
             var rateios = dto.Rateios
-                .Select(rateioDto => (rateioDto.CategoriaId, new ValorRateio(rateioDto.Valor)))
+                .Select(rateioDto => (rateioDto.CategoriaId, new DestinoRateio(rateioDto.Destino), new ValorRateio(rateioDto.Valor)))
                 .ToList();
 
             var transacao = Transacao.Criar(dto.UsuarioId, valorTotal, descricao);
@@ -47,7 +47,7 @@ namespace CoFinanceControl.Application.Transacoes.Services
         {
             var transacao = await _transacaoRepository.ObterPorIdAsync(id, ct);
             var rateios = dto.Rateios
-                .Select(rateioDto => (rateioDto.CategoriaId, new ValorRateio(rateioDto.Valor)))
+                .Select(rateioDto => (rateioDto.CategoriaId, new DestinoRateio(rateioDto.Destino), new ValorRateio(rateioDto.Valor)))
                 .ToList();
 
             if (transacao is null)
@@ -102,6 +102,7 @@ namespace CoFinanceControl.Application.Transacoes.Services
                 Rateios = transacao.Rateios.Select(rateio => new RateioDto
                 {
                     CategoriaId = rateio.CategoriaId,
+                    Destino = rateio.Destino,
                     Valor = rateio.Valor
                 }).ToList()
             };

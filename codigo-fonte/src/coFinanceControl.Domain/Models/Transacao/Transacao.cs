@@ -1,6 +1,5 @@
 using CoFinanceControl.Domain.Models.Transacao.ValueObjects;
 using CoFinanceControl.Domain.Models.Rateios;
-
 namespace CoFinanceControl.Domain.Models.Transacao
 {
     public sealed class Transacao
@@ -35,7 +34,7 @@ namespace CoFinanceControl.Domain.Models.Transacao
             DataAtualizacao = DateTime.UtcNow;
         }
 
-        public void DefinirRateios(IEnumerable<( int categoriaId, ValorRateio valor)> rateios)
+        public void DefinirRateios(IEnumerable<( int categoriaId, DestinoRateio destino, ValorRateio valor)> rateios)
         {
             _rateios.Clear();
 
@@ -43,6 +42,7 @@ namespace CoFinanceControl.Domain.Models.Transacao
             {
                 _rateios.Add(new Rateio(
                     transacaoId: Id,
+                    destino: r.destino,
                     categoriaId: r.categoriaId,
                     valor: r.valor
                 ));

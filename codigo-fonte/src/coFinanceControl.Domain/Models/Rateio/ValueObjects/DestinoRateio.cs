@@ -1,5 +1,4 @@
-namespace CoFinanceControl.Domain.Models.Rateio.ValueObjects
-{
+namespace CoFinanceControl.Domain.Models.Rateios{
     public readonly record struct DestinoRateio
     {
         public string Valor { get; }

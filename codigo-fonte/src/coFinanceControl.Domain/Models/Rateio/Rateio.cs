@@ -1,5 +1,3 @@
-using CoFinanceControl.Domain.Models.Rateio.ValueObjects;
-
 namespace CoFinanceControl.Domain.Models.Rateios
 {
     public sealed class Rateio
@@ -13,9 +11,10 @@ namespace CoFinanceControl.Domain.Models.Rateios
         private Rateio(){}
 
         //Apenas transação pode criar
-        internal Rateio(int transacaoId, int categoriaId, ValorRateio valor)
+        internal Rateio(int transacaoId, DestinoRateio destino, int categoriaId, ValorRateio valor)
         {
             TransacaoId = transacaoId;
+            Destino = destino;
             CategoriaId = categoriaId;
             Valor = valor;
         }
