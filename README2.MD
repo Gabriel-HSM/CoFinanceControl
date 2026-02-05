@@ -21,6 +21,7 @@ Categoria:
 
 Transacao:
 - validações extras em Valor, a que possui agora acredito ser insuficiente
+-permitir descrição nulla
 
 Rateio:
 - validações extras em Valor, a que possui agora acredito ser insuficiente

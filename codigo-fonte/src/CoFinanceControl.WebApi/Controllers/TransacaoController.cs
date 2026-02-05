@@ -10,7 +10,7 @@ namespace MyApp.Namespace
     {
         private ITransacaoService _service;
 
-        TransacaoController(ITransacaoService service)
+        public TransacaoController(ITransacaoService service)
         {
             _service = service;
         }
