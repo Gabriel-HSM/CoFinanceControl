@@ -21,8 +21,11 @@ namespace CoFinanceControl.Infrastructure.Data
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+            // var optionsBuilder = new DbContextOptionsBuilder<CoFinanceDbContext>();
+            // optionsBuilder.UseNpgsql(connectionString);
+
             var optionsBuilder = new DbContextOptionsBuilder<CoFinanceDbContext>();
-            optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseInMemoryDatabase("InMemory");
 
             return new CoFinanceDbContext(optionsBuilder.Options);
         }
