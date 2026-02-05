@@ -1,5 +1,7 @@
 using CoFinanceControl.Domain.Models.Categoria;
 using CoFinanceControl.Domain.Models.Categoria.ValueObjects;
+using CoFinanceControl.Domain.Models.Rateios;
+using CoFinanceControl.Domain.Models.Transacao;
 using CoFinanceControl.Domain.Models.Usuario;
 using CoFinanceControl.Domain.Models.Usuario.ValueObects;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +17,8 @@ namespace CoFinanceControl.Infrastructure.Data
         //Criação das tabelas
         public DbSet<Usuario> Usuarios => Set<Usuario>();
         public DbSet<Categoria> Categorias => Set<Categoria>();
+        public DbSet<Transacao> Transacoes => Set<Transacao>();
+        public DbSet<Rateio> Rateios => Set<Rateio>();
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -61,7 +65,7 @@ namespace CoFinanceControl.Infrastructure.Data
                 entity.HasOne<Usuario>()
                 .WithMany()
                 .HasForeignKey(c => c.UsuarioId)
-                .OnDelete(DeleteBehavior.Restrict)//Impede que exlua caso usuario tenha categorias
+                .OnDelete(DeleteBehavior.Restrict)//Impede que exclua caso usuario tenha categorias
                 .IsRequired(false); //permite nulo
 
                 entity.Property(c => c.Nome)
