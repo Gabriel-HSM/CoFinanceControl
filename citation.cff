@@ -1,25 +1,17 @@
 message: Please cite this software using these metadata.
-title:
+title: CoFinance App - Sistema de Controle Financeiro
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - name-suffix: Nome do Professor
+  - family-names: Moura
+    given-names: Gabriel Henrique Santos
+  - name-suffix: Orientador
     affiliation: Next Coders
-    family-names: 
-    given-names: 
+    family-names: Sant'Anna
+    given-names: Willian
 keywords:
-  - 
-  - 
-repository-code: 
+  - Controle Financeiro
+  - ASP.NET Core
+  - Clean Architecture
+  - API REST
+repository-code: https://github.com/seu-usuario/CoFinanceControl
 version: 1.0.0
-date-released: 2025-11-02
+date-released: 2026-02-05
