@@ -248,14 +248,15 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 
 ## Observações Gerais
 
-- **Taxa de sucesso**: 5/7 casos aprovados (71%)
-- **Pendências**: 1 caso ainda não implementado (CT-04)
-- **Correções necessárias**: 1 caso reprovou e precisa de ajuste (CT-07)
-- **Testes executados em**: 05/02/2026
+- **Taxa de sucesso**: 17/20 casos aprovados (85%)
+- **Casos pendentes**: 2 (CT-19, CT-20)
+- **Pendências**: Transações
+- **Correções necessárias**: Precisa de ajuste (CT-19, CT-20)
+- **Testes executados em**: 06/02/2026
 - **Ambiente**: Desenvolvimento (In-Memory Database)
 
 ## Próximos Passos
 
-1. Implementar validação de categoria duplicada (CT-04)
-2. Adicionar validação de soma dos rateios (CT-07)
+1. Adicionar validação de soma dos rateios
+2. Organizar transacoes
 3. Re-executar testes após correções
