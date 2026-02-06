@@ -118,6 +118,7 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 # Categoria
 
 <br>
+
 ---
 | Caso de Teste    | CT-11 - Cadastrar categoria com dados válidos |
 |:---|:---|
@@ -222,6 +223,7 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 # Transacao
 
 <br>
+
 ---
 |Caso de Teste    | CT-05 - Cadastrar transação sem rateio |
 |:---|:---|
