@@ -159,12 +159,13 @@ A documentação completa está disponível via Swagger após executar a aplica�
 - Documentação Swagger/OpenAPI
 - Suporte a In-Memory Database para desenvolvimento
 
-### [1.0.1] - 05/02/2026
-#### Adicionado
-- CRUD completo de Trasações
+### [1.0.1] - 06/02/2026
+
 #### Adicionado
 - CRUD completo de Transações
 - Validações adicionais nos usuários, impedindo caracteres especiais
+- Melhorias no CRUD de Categorias
+- Aprimoramentos no CRUD de Usuários
 
 #### Pendente
 - Implementação de autenticação JWT
