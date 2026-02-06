@@ -98,6 +98,7 @@ namespace CoFinanceControl.Infrastructure.Data
                 entity.Property(c => c.DataAtualizacao);
 
                 entity.HasIndex(c => c.UsuarioId);
+                entity.HasIndex(c => c.Nome).IsUnique();
                 
             });
 

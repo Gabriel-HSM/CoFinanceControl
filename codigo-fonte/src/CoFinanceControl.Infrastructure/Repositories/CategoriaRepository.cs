@@ -50,5 +50,15 @@ namespace CoFinanceControl.Infrastructure.Repositories
                 .AsNoTracking()
                 .ToListAsync(ct);
         }
+
+        public async Task<bool> ExisteComNomeAsync(string nome, CancellationToken ct = default)
+        {
+            var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.Nome == nome, ct);
+
+            if (categoria is not null)
+            return true;
+
+            return false;
+        }
     }
 }

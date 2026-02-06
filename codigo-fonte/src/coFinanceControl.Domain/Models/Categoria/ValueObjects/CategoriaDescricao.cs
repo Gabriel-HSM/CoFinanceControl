@@ -1,7 +1,10 @@
+using System.Text.RegularExpressions;
+
 namespace CoFinanceControl.Domain.Models.Categoria.ValueObjects
 {
     public readonly record struct CategoriaDescricao
     {
+        private static Regex RegexNome = new (@"^[A-Za-zÀ-ÖØ-öø-ÿ0-9 ]+$");
         public string Valor { get; }
 
         public CategoriaDescricao(string valor)
@@ -18,9 +21,14 @@ namespace CoFinanceControl.Domain.Models.Categoria.ValueObjects
                 throw new ArgumentException("A descrição não pode exceder 155 caracteres", nameof(valor));
             }
 
-            if (categoriaNomeFormatado.Length < 7)
+            if (categoriaNomeFormatado.Length < 3)
             {
-                throw new ArgumentException("A descrição não pode ser menor que 7 caracteres", nameof(valor));
+                throw new ArgumentException("A descrição não pode ser menor que 3 caracteres", nameof(valor));
+            }
+
+            if (!RegexNome.IsMatch(valor))
+            {
+                throw new ArgumentException("Nome contém caracteres inválidos");      
             }
 
             Valor = valor;

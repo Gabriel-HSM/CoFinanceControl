@@ -26,6 +26,11 @@ namespace MyApp.Namespace
                 return Ok(categoriaSis);
             }
 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var categoriaUser = await _service.CriarCategoriaUsuarioAsync(dto.UsuarioId.Value, dto, ct);
             return Ok(categoriaUser);
         }

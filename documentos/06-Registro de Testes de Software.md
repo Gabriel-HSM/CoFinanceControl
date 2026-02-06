@@ -23,17 +23,15 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 ---
 
 <br>
-<br>
 
 ---
 | Caso de Teste    | CT-02 – Tentar cadastrar usuário com nome vazio |
 |:---|:---|
 | Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o nome é obrigatório |
-| Resultados obtidos | ✅ **APROVADO** <br> - Status 400 Bad Request <br> - Mensagem: "O nome do usuário não deve ser vazio" |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 400 Bad Request <br> - Mensagem de erro: "O nome do usuário não deve ser vazio" |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 
-<br>
 <br>
 
 ---
@@ -46,7 +44,6 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 ---
 
 <br>
-<br>
 
 ---
 | Caso de Teste    | CT-04 - Tentar cadastrar usuário com nome menor que 3 caracteres |
@@ -56,7 +53,6 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 
-<br>
 <br>
 
 ---
@@ -68,7 +64,6 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 ---
 
 <br>
-<br>
 
 ---
 | Caso de Teste    | CT-06 - Tentar cadastrar usuário com sobrenome vazio |
@@ -78,7 +73,6 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 
-<br>
 <br>
 
 ---
@@ -90,7 +84,6 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 ---
 
 <br>
-<br>
 
 ---
 | Caso de Teste    | CT-08 - Tentar cadastrar usuário com sobrenome menor que 3 caracteres |
@@ -100,7 +93,6 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 
-<br>
 <br>
 
 ---
@@ -112,7 +104,6 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 ---
 
 <br>
-<br>
 
 ---
 | Caso de Teste    | CT-10 - Tentar cadastrar usuário com data de nascimento com data futura |
@@ -120,36 +111,118 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a data não deve ser futura |
 | Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "A data de nascimento não deve ser uma data futura" <br> - Validação funcionou conforme esperado |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
 
-<br>
 <br>
 
 # Categoria
 
 <br>
-<br>
-
+---
 | Caso de Teste    | CT-11 - Cadastrar categoria com dados válidos |
 |:---|:---|
 | Resultado esperado | Sistema deve retornar status 201 Created e o categoria retornado |
-✅ **APROVADO** <br> - Sistema retornou status 200 OK <br> - Categoria criado com ID gerado automaticamente <br> - Dados salvos corretamente no banco |
+| Resultados obtidos |✅ **APROVADO** <br> - Sistema retornou status 200 OK <br> - Categoria criado com ID gerado automaticamente <br> - Dados salvos corretamente no banco |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
-
-
-Caso de Teste    | CT-03 - Cadastrar categoria com dados válidos |
-|:---|:---|
-| Resultados obtidos | ✅ **APROVADO** <br> - Status 200 OK retornado <br> - Categoria criada e vinculada ao usuário correto <br> - ID gerado automaticamente |
-| Responsável pela execução do caso de Teste | Gabriel Henrique |
-
 ---
 
-|Caso de Teste    | CT-04 - Tentar cadastrar categoria com nome duplicado |
-|:---|:---|
-| Resultados obtidos | ⚠️ **PENDENTE** <br> - Teste ainda não implementado <br> - Validação de duplicidade precisa ser adicionada |
-| Responsável pela execução do caso de Teste | Gabriel Henrique |
+<br>
 
 ---
+| Caso de Teste    | CT-12 - Tentar cadastrar categoria com nome vazio |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o nome da categoria não deve ser vazio |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "O nome da categoria não deve ser vazio" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
 
+<br>
+
+---
+| Caso de Teste    | CT-13 - Tentar cadastrar categoria com nome maior que 50 caracteres |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o nome da categoria deve ter no máximo 50 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "O nome da categoria deve ter no máximo 50 caracteres" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-14 - Tentar cadastrar categoria com nome menor que 3 caracteres |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o nome da categoria deve ter no mínimo 3 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "O nome da categoria deve ter no mínimo 3 caracteres" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-15 - Tentar cadastrar categoria com nome com caracteres especiais |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o nome da categoria não deve conter caracteres especiais |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "O nome da categoria não deve conter caracteres especiais" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-16 - Tentar cadastrar categoria com descrição vazia |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a descrição da categoria não deve ser vazia |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "A descrição da categoria não deve ser vazia" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-17 - Tentar cadastrar categoria com descrição maior que 155 caracteres |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a descrição da categoria deve ter no máximo 155 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "A descrição da categoria deve ter no máximo 155 caracteres" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-18 - Tentar cadastrar categoria com descrição menor que 3 caracteres |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a descrição da categoria deve ter no mínimo 3 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "A descrição da categoria deve ter no mínimo 3 caracteres" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-19 - Tentar cadastrar categoria com nome duplicado |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a já possui categoria com esse nome |
+| Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error, implementação Bad Request Pendente <br> - Mensagem de erro: "Não é possível criar a categoria porque já existe uma categoria com o mesmo nome" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-20 - Tentar cadastrar categoria com id de usuario inexistente |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o usuario não encontrado ou inexistente |
+| Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error, implementação Bad Request Pendente <br> - Mensagem de erro: "Usuario Não encontrado" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+# Transacao
+
+<br>
+---
 |Caso de Teste    | CT-05 - Cadastrar transação sem rateio |
 |:---|:---|
 | Resultados obtidos | ✅ **APROVADO** <br> - Transação criada com sucesso <br> - Rateio único vinculado corretamente <br> - DataCriacao registrada |

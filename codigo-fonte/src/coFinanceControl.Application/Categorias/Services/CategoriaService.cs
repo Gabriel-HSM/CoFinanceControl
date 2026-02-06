@@ -1,5 +1,6 @@
 using CoFinanceControl.Application.Categorias.DTOs;
 using CoFinanceControl.Application.Categorias.Repositories;
+using CoFinanceControl.Application.Usuarios.Repositories;
 using CoFinanceControl.Domain.Models.Categoria;
 using CoFinanceControl.Domain.Models.Categoria.ValueObjects;
 
@@ -8,15 +9,21 @@ namespace CoFinanceControl.Application.Categorias.Services
     public sealed class CategoriaService : ICategoriaService
     {
        private readonly ICategoriaRepository  _categoriaRepository;
+       private readonly IUsuarioRepository _usuarioRepository;
 
-       public CategoriaService(ICategoriaRepository categoriaRepository)
+       public CategoriaService(ICategoriaRepository categoriaRepository, IUsuarioRepository usuarioRepository)
         {
             _categoriaRepository = categoriaRepository;
+            _usuarioRepository = usuarioRepository;
         }
 
         public async Task<CategoriaDto> CriarCategoriaSistemaAsync(CriarCategoriaDto dto, CancellationToken ct = default)
         {
             var (nome, descricao) = CriarValueObjects(dto);
+            var existe = await _categoriaRepository.ExisteComNomeAsync(nome, ct);
+
+            if (existe)
+                throw new ArgumentException("Não é possível criar a categoria porque já existe uma categoria com o mesmo nome.");
 
             var categoria = Categoria.CriarCategoriaSis(nome, descricao);
             await _categoriaRepository.AdicionarAsync(categoria, ct);
@@ -26,7 +33,15 @@ namespace CoFinanceControl.Application.Categorias.Services
         public async Task<CategoriaDto> CriarCategoriaUsuarioAsync(Guid usuarioId, CriarCategoriaDto dto, CancellationToken ct = default)
         {
            var (nome, descricao) = CriarValueObjects(dto);
+           var existe = await _categoriaRepository.ExisteComNomeAsync(nome, ct);
+           var usuarioExiste = await _usuarioRepository.ObterPorIdAsync(usuarioId, ct);
 
+            if (existe)
+                throw new ArgumentException("Não é possível criar a categoria porque já existe uma categoria com o mesmo nome.");
+
+            if (usuarioExiste is null)
+                throw new ArgumentException("Usuario Não encontrado ou inexistente");
+            
             var categoria = Categoria.CriarCategoriaUser(nome, descricao, usuarioId);
             await _categoriaRepository.AdicionarAsync(categoria, ct);
             return MapearParaDto(categoria);
