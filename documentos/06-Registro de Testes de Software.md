@@ -203,7 +203,7 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Caso de Teste    | CT-19 - Tentar cadastrar categoria com nome duplicado |
 |:---|:---|
 | Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a já possui categoria com esse nome |
-| Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error, implementação Bad Request Pendente <br> - Mensagem de erro: "Não é possível criar a categoria porque já existe uma categoria com o mesmo nome" |
+| Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error <br> - Implementação Bad Request Pendente <br> - Mensagem de erro: "Não é possível criar a categoria porque já existe uma categoria com o mesmo nome" |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 ---
