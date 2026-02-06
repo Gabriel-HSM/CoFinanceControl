@@ -164,12 +164,12 @@ A documentação completa está disponível via Swagger após executar a aplica�
 #### Adicionado
 - CRUD completo de Transações
 - Validações adicionais nos usuários, impedindo caracteres especiais
+- Validações adicionais nas categorias, impedindo caracteres especiais
 - Melhorias no CRUD de Categorias
 - Aprimoramentos no CRUD de Usuários
 
 #### Pendente
 - Implementação de autenticação JWT
-- Endpoints de atualização e exclusão de Transações
 - Validação de soma dos rateios
 - Migrations para PostgreSQL
 - Testes unitários e de integração
