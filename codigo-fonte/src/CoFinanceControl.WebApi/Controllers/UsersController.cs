@@ -18,6 +18,9 @@ namespace CoFinanceControl.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CriarUsuario([FromBody] CriarUsuarioDto dto, CancellationToken cancellationToken = default)
         {
+            if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
             var usuario = await _service.CriarAsync (dto, cancellationToken);
             return CreatedAtAction(nameof(ObterUsuarioId), new {id = usuario.Id}, usuario);
         }

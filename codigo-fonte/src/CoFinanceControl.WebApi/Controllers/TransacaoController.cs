@@ -21,5 +21,51 @@ namespace MyApp.Namespace
             var transacao = await _service.CriarAsync(dto, ct);
             return Ok(transacao);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> ObterTransacaoID (
+            [FromRoute]int id,
+            CancellationToken ct = default)
+        {
+            var transacao = await _service.ObterAsync(id, ct);
+
+            if (transacao is null)
+            return NotFound();
+
+            return Ok(transacao);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarTransacao 
+        (
+            [FromRoute] int id, 
+            [FromBody] AtualizarTransacaoDto dto,
+            CancellationToken ct = default)
+        {
+            var transacao = await _service.AtualizarAsync(id, dto, ct);
+
+            if (transacao is null)
+            return NotFound();
+
+            return Ok(transacao);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarTransacao ([FromRoute] int id, CancellationToken ct = default)
+        {
+            var tranacaoD = await _service.DeletarAsync(id, ct);
+
+            if (!tranacaoD)
+            return NotFound();
+
+            return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ObterTodasTransacoes (CancellationToken ct = default)
+        {
+            var transacao = await _service.ObterTodosAsync(ct);
+            return Ok(transacao);
+        }
     }
 }

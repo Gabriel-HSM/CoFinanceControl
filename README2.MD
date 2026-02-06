@@ -10,7 +10,7 @@ Futuras implementações para:
 * Relatórios
 
 Usuario:
-- validação se tem caracter especial em Nome e sobrenome
+- validação se tem caracter especial em Nome e sobrenome ✅
 - adicionar Tipo pessoa (pf e pj)
 - validação se possui numeros (verificando se faz sentido)
 

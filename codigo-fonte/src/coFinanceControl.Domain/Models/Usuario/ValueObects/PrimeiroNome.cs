@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace CoFinanceControl.Domain.Models.Usuario.ValueObects
 {
     //Readonly: será validado, então sobreescrever é um erro.
@@ -5,6 +7,7 @@ namespace CoFinanceControl.Domain.Models.Usuario.ValueObects
     //Struct: otimização de memória.
     public readonly record struct PrimeiroNome
     {
+        private static readonly Regex RegexNome = new (@"^[A-Za-zÀ-ÖØ-öø-ÿ ]+$");
         public string Valor {get;}
 
         public PrimeiroNome(string valor)
@@ -25,6 +28,9 @@ namespace CoFinanceControl.Domain.Models.Usuario.ValueObects
             {
                 throw new ArgumentException("O Primeiro nome não deve ser menor que 3 caracteres", nameof(valor));
             }
+
+            if (!RegexNome.IsMatch(valor))
+            throw new ArgumentException("Nome contém caracteres inválidos");
 
             Valor = valor;
         }

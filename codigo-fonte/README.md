@@ -97,7 +97,7 @@ https://localhost:5001/swagger
 
 - Provedores sugeridos: Azure App Service, Render, Railway, Fly.io
 - Banco de dados: PostgreSQL (Supabase, ElephantSQL, Azure Database)
-- URL pública: [insira aqui após a publicação]
+- URL pública: [a definir]
 
 ## Módulos Implementados
 
@@ -158,6 +158,13 @@ A documentação completa está disponível via Swagger após executar a aplica�
 - Configuração de Clean Architecture
 - Documentação Swagger/OpenAPI
 - Suporte a In-Memory Database para desenvolvimento
+
+### [1.0.1] - 05/02/2026
+#### Adicionado
+- CRUD completo de Trasações
+#### Adicionado
+- CRUD completo de Transações
+- Validações adicionais nos usuários, impedindo caracteres especiais
 
 #### Pendente
 - Implementação de autenticação JWT

@@ -1,7 +1,11 @@
+using System.Text.RegularExpressions;
+
 namespace CoFinanceControl.Domain.Models.Usuario.ValueObects
 {
     public readonly record struct Sobrenome
     {
+        private static readonly Regex RegexSobrenome = new (@"^[A-Za-zÀ-ÖØ-öø-ÿ ]+$");
+
         public string Valor { get; }
         
         public Sobrenome(string valor)
@@ -21,6 +25,11 @@ namespace CoFinanceControl.Domain.Models.Usuario.ValueObects
             if (sobrenomeNomeSemEspacos.Length < 3)
             {
                 throw new ArgumentException("O sobrenome nome não pode ser menor que 3 caracteres.", nameof(valor));
+            }
+
+            if (!RegexSobrenome.IsMatch(valor))
+            {
+                throw new ArgumentException("Sobrenome contém caracteres inválidos");
             }
 
             Valor = valor;
