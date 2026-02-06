@@ -214,7 +214,7 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Caso de Teste    | CT-20 - Tentar cadastrar categoria com id de usuario inexistente |
 |:---|:---|
 | Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o usuario não encontrado ou inexistente |
-| Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error, implementação Bad Request Pendente <br> - Mensagem de erro: "Usuario Não encontrado" |
+| Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error <br> - Implementação Bad Request Pendente <br> - Mensagem de erro: "Usuario Não encontrado" |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 
