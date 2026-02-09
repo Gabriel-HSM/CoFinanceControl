@@ -18,6 +18,9 @@ namespace MyApp.Namespace
         [HttpPost]
         public async Task<IActionResult> CriarTransacao([FromBody]CriarTransacaoDto dto, CancellationToken ct = default)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var transacao = await _service.CriarAsync(dto, ct);
             return Ok(transacao);
         }

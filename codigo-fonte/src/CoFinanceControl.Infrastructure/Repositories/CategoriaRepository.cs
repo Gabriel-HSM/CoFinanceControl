@@ -60,5 +60,11 @@ namespace CoFinanceControl.Infrastructure.Repositories
 
             return false;
         }
+
+        public async Task<List<Categoria>> ObterVariosIDsValidacao (IEnumerable<int> ids, CancellationToken ct = default)
+        {
+            return await _context.Categorias.Where(c => ids.Contains(c.Id))
+            .ToListAsync(ct);
+        }
     }
 }

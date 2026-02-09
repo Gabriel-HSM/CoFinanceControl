@@ -11,5 +11,6 @@ namespace CoFinanceControl.Application.Categorias.Repositories
         Task<bool> DeletarAsync (int id, CancellationToken ct = default);
         Task<IEnumerable<Categoria>> ObterTodosAsync (CancellationToken ct = default); 
         Task<bool> ExisteComNomeAsync (string nome, CancellationToken ct = default);
+        Task<List<Categoria>> ObterVariosIDsValidacao (IEnumerable<int> ids, CancellationToken ct = default);
     }
 }

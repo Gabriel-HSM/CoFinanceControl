@@ -206,7 +206,6 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error <br> - Implementação Bad Request Pendente <br> - Mensagem de erro: "Não é possível criar a categoria porque já existe uma categoria com o mesmo nome" |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
----
 
 <br>
 
@@ -225,25 +224,72 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 <br>
 
 ---
-|Caso de Teste    | CT-05 - Cadastrar transação sem rateio |
+| Caso de Teste    | CT-21 - Cadastrar transação com dados válidos |
 |:---|:---|
-| Resultados obtidos | ✅ **APROVADO** <br> - Transação criada com sucesso <br> - Rateio único vinculado corretamente <br> - DataCriacao registrada |
+| Resultado esperado | Sistema deve retornar status 201 Created e a transação retornada |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 200 OK <br> - Transação criada com ID gerado automaticamente <br> - Dados salvos corretamente no banco |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-22 - Tentar cadastrar transação sem valor total |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que não é possivel cadastrar transação sem o valor |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "O valor deve ser maior que 0 e não deve ser vazio" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-23 - Tentar cadastrar transação adicionando 0 no valor total |
+|:---|:---|
+| Resultado esperado |  Sistema deve retornar status 400 Bad Request e mensagem informando que não é o valor total tem que ser maior que 0 |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "O valor deve ser maior que 0 e não deve ser vazio" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
 
 ---
 
-|Caso de Teste    | CT-06 - Cadastrar transação com múltiplos rateios |
+| Caso de Teste    | CT-24 - Tentar cadastrar transação sem rateio |
 |:---|:---|
-| Resultados obtidos | ✅ **APROVADO** <br> - Transação aceita múltiplos rateios <br> - Todos os rateios foram salvos corretamente <br> - Soma validada |
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que não é possivel cadastrar transação sem a categoria e destino|
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br> - Mensagem de erro: "A transação deve ter uma categoria e destino (rateio)." |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
-
 ---
 
-|Caso de Teste    | CT-07 - Tentar cadastrar transação com soma dos rateios diferente do valor total |
-|:---|:---|
-| Resultados obtidos | ❌ **REPROVADO** <br> - Sistema não validou a inconsistência <br> - Transação foi criada com valores inconsistentes <br> - **Correção necessária**: Adicionar validação no método `DefinirRateios` |
-| Responsável pela execução do caso de Teste | Gabriel Henrique |
+<br>
 
+---
+| Caso de Teste    | CT-25 - Tentar cadastrar transação com multiplos rateios |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que não é possivel cadastrar transação sem o categoria |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 200 OK <br> - Transação criada com múltiplos rateios <br> - Dados salvos corretamente no banco |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-26 - Tentar cadastrar transação com categoria inexistente |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a categoria não foi encontrada ou inexistente |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 500 Internal Server Error <br> - Implementação Bad Request Pendente <br> - Mensagem de erro: Erro de categorias. Uma ou mais estão inválidas, não encontradas ou inexistentes |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-27 - Tentar cadastrar transação com soma dos rateios diferentes do valor total |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que não é possivel cadastrar transação sem o categoria |
+| Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error <br> - Implementação Bad Request Pendente <br> - Mensagem de erro: "O valor da categoria está diferente do valor total" |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 
 ## Observações Gerais

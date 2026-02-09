@@ -1,3 +1,5 @@
+using System.Text.Encodings.Web;
+using CoFinanceControl.Application.Categorias.Repositories;
 using CoFinanceControl.Application.Rateios.DTOs;
 using CoFinanceControl.Application.Transacoes.DTOs;
 using CoFinanceControl.Application.Transacoes.Repositories;
@@ -10,21 +12,52 @@ namespace CoFinanceControl.Application.Transacoes.Services
     public sealed class TransacaoService : ITransacaoService
     {
         private ITransacaoRepository _transacaoRepository;
+        private ICategoriaRepository _categoriaRepository;
 
-        public TransacaoService(ITransacaoRepository transacaoRepository)
+        public TransacaoService(ITransacaoRepository transacaoRepository, ICategoriaRepository categoriaRepository)
         {
             _transacaoRepository = transacaoRepository;
+            _categoriaRepository = categoriaRepository;
+
         }
 
         public async Task<TransacaoDto> CriarAsync (CriarTransacaoDto dto, CancellationToken ct = default)
         {
+            if (dto.Rateios is null || !dto.Rateios.Any())
+            throw new ArgumentException("Não é possível cadastrar transação sem categoria e destino");
+
+            var categoriaIds = dto.Rateios
+            .Select(r => r.CategoriaId)
+            .Distinct()
+            .ToList();
+
+            var categoriasExistentes = await _categoriaRepository.ObterVariosIDsValidacao(categoriaIds, ct);
+
+            if (categoriasExistentes.Count != categoriaIds.Count)
+            throw new ArgumentException("Erro de categorias. Uma ou mais estão inválidas, não encontradas ou inexistentes"); 
+
             var valorTotal = new TransacaoValor(dto.ValorTotal);
             var descricao = new TransacaoDescricao(dto.Descricao);
-            var rateios = dto.Rateios
+
+            var rateios = dto.Rateios? 
                 .Select(rateioDto => (rateioDto.CategoriaId, new DestinoRateio(rateioDto.Destino), new ValorRateio(rateioDto.Valor)))
                 .ToList();
 
+            //Verificação se a soma dos rateios é igual ao valor total da transação
+            decimal somaRateios = 0;
+
+            if (rateios is null)
+            throw new ArgumentException("Não é possível cadastrar transação sem categoria e destino");
+
+            foreach( var v in rateios){
+                somaRateios += v.Item3.Valor;
+            }
+
             var transacao = Transacao.Criar(dto.UsuarioId, valorTotal, descricao);
+
+            if (somaRateios != valorTotal)
+            throw new ArgumentException("O valor da categoria está diferente do valor total da transção");
+
             transacao.DefinirRateios(rateios);
 
             await _transacaoRepository.AdicionarAsync(transacao, ct);
