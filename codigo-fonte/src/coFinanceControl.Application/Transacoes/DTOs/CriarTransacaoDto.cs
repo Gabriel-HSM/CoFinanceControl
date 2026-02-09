@@ -10,7 +10,7 @@ namespace CoFinanceControl.Application.Transacoes.DTOs
         public decimal ValorTotal { get; init; }
         [Required(ErrorMessage = "A descrição da transação não pode ser vazia")]
         [MaxLength(155, ErrorMessage = "A descrição deve ter no máximo 155 caracteres")]
-        [MinLength(5, ErrorMessage = "A descrição deve ter no máximo 5 caracteres")]
+        [MinLength(5, ErrorMessage = "A descrição deve ter no mínimo 5 caracteres")]
         public required string Descricao { get; init; }
         [Required(ErrorMessage = "A transação deve ter uma categoria e destino (rateio).")]
         public List<CriarRateioDto>? Rateios { get; init; }

@@ -278,14 +278,74 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Caso de Teste    | CT-26 - Tentar cadastrar transação com categoria inexistente |
 |:---|:---|
 | Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a categoria não foi encontrada ou inexistente |
-| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 500 Internal Server Error <br> - Implementação Bad Request Pendente <br> - Mensagem de erro: Erro de categorias. Uma ou mais estão inválidas, não encontradas ou inexistentes |
+| Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500 Internal Server Error <br> - Implementação Bad Request Pendente <br> - Mensagem de erro: Erro de categorias. Uma ou mais estão inválidas, não encontradas ou inexistentes |
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 
 <br>
 
 ---
-| Caso de Teste    | CT-27 - Tentar cadastrar transação com soma dos rateios diferentes do valor total |
+| Caso de Teste    | CT-27 - Tentar cadastrar transação com descrição vazia |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a descrição não pode estar vazia |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br>  - Mensagem de erro: A descrição da transação não pode ser vazia |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-28 - Tentar cadastrar transação com descrição maior que 155 caracteres |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a descrição deve ter no máximo 155 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br>  - Mensagem de erro: A descrição deve ter no máximo 155 caracteres |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-29 - Tentar cadastrar transação com descrição menor que 5 caracteres |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a descrição deve ter no mínimo 5 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br>  - Mensagem de erro: A descrição deve ter no mínimo 5 caracteres |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-30 - Tentar cadastrar transação com rateio sem destino |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que a descrição deve ter no máximo 155 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br>  - Mensagem de erro: O destino da transação não pode ser vazia |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-31 - Tentar cadastrar transação com destino menor que 5 caracteres |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o destino deve ter no mínimo 5 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br>  - Mensagem de erro: O destino deve ter no mínimo 5 caracteres |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-32 - Tentar cadastrar transação com destino maior que 20 caracteres |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que o destino deve ter no máximo 20 caracteres |
+| Resultados obtidos | ✅ **APROVADO** <br> - Sistema retornou status 400 Bad Request <br>  - Mensagem de erro: O destino deve ter no máximo 20 caracteres |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-33 - Tentar cadastrar transação com soma dos rateios diferentes do valor total |
 |:---|:---|
 | Resultado esperado | Sistema deve retornar status 400 Bad Request e mensagem informando que não é possivel cadastrar transação sem o categoria |
 | Resultados obtidos | ⚠️ **PENDENTE** <br> - Sistema retornou status 500  Internal Server Error <br> - Implementação Bad Request Pendente <br> - Mensagem de erro: "O valor da categoria está diferente do valor total" |
@@ -294,15 +354,16 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 
 ## Observações Gerais
 
-- **Taxa de sucesso**: 17/20 casos aprovados (85%)
-- **Casos pendentes**: 2 (CT-19, CT-20)
-- **Pendências**: Transações
-- **Correções necessárias**: Precisa de ajuste (CT-19, CT-20)
+- **Taxa de sucesso**: 30/33 casos aprovados (91%)
+- **Casos pendentes**: 3 (CT-19, CT-20, CT-26, CT-33)
+- **Pendências**: 
+  - Implementar tratamento melhor de excessões personalizadas
+- **Correções necessárias**: 
+  - Implementar retorno 400 Bad Request para os casos CT-19, CT-20, CT-26 e CT-33
+  - Ajustar tratamento de exceções para erros de validação
 - **Testes executados em**: 06/02/2026
 - **Ambiente**: Desenvolvimento (In-Memory Database)
 
 ## Próximos Passos
 
-1. Adicionar validação de soma dos rateios
-2. Organizar transacoes
-3. Re-executar testes após correções
+1. Re-executar testes após correções
