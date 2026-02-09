@@ -354,8 +354,8 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 
 ## Observações Gerais
 
-- **Taxa de sucesso**: 30/33 casos aprovados (91%)
-- **Casos pendentes**: 3 (CT-19, CT-20, CT-26, CT-33)
+- **Taxa de sucesso**: 29/33 casos aprovados (89%)
+- **Casos pendentes**: 4 (CT-19, CT-20, CT-26, CT-33)
 - **Pendências**: 
   - Implementar tratamento melhor de excessões personalizadas
 - **Correções necessárias**: 
