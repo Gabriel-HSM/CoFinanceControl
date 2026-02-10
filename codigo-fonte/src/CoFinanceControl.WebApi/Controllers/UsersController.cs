@@ -2,6 +2,7 @@ using CoFinanceControl.Application.Usuarios.DTOs;
 using CoFinanceControl.Application.Usuarios.Services;
 using Microsoft.AspNetCore.Mvc;
 
+//controller limpo porque as verificações estão no service
 namespace CoFinanceControl.WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -31,12 +32,6 @@ namespace CoFinanceControl.WebApi.Controllers
             CancellationToken cancellationToken = default)
         {
             var usuario = await _service.ObterPorIdAsync(id, cancellationToken);
-
-            if (usuario is null)
-            {
-                return NotFound();
-            }
-            
             return Ok(usuario);
         }
 

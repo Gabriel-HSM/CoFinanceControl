@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OZkAIo9aKiQ=",
+  "dgSpecHash": "QQclehGQPiM=",
   "success": true,
   "projectFilePath": "C:\\Projetos\\CoFinanceControl\\codigo-fonte\\src\\CoFinanceControl.Domain\\CoFinanceControl.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.22\\microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.22\\microsoft.windowsdesktop.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\Iel Sistema\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.22\\microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512"
+  ],
   "logs": []
 }
