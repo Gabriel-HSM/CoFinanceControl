@@ -1,3 +1,4 @@
+using CoFinanceControl.Application.Exeptions;
 using CoFinanceControl.Application.Usuarios.DTOs;
 using CoFinanceControl.Application.Usuarios.Repositories;
 using CoFinanceControl.Domain.Models.Usuario;
@@ -18,15 +19,13 @@ namespace CoFinanceControl.Application.Usuarios.Services
 
         public async Task<UsuarioDto> CriarAsync(CriarUsuarioDto dto, CancellationToken cancellationToken = default)
         {
-            //Aqui seria validação de credencial unica.
-
             //Converte dados do DTO para VOs
             var nome = new PrimeiroNome(dto.Nome);
             var sobrenome = new Sobrenome(dto.Sobrenome);
             DataNascimento? dataNascimento = dto.DataNascimento.HasValue
                 ? new DataNascimento(dto.DataNascimento.Value)
                 : null;
-
+            
 
             //Cria o usuario
             var usuario = Usuario.Criar(nome, sobrenome, dataNascimento);
@@ -41,16 +40,20 @@ namespace CoFinanceControl.Application.Usuarios.Services
         public async Task<UsuarioDto?> ObterPorIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             var usuario = await _usuarioRepository.ObterPorIdAsync(id, cancellationToken);
-            return usuario is not null ? MapearParaDto(usuario) : null;
+
+            if(usuario is null)
+            throw new UsuarioNaoEncontradoException("Usuario não encontrado ou inexistente");
+
+
+            return MapearParaDto(usuario);
         }
 
         public async Task<UsuarioDto?> AtualizarAsync(Guid id, AtualizarUsuarioDto dto, CancellationToken cancellationToken = default)
         {
             var usuario = await _usuarioRepository.ObterPorIdAsync(id, cancellationToken);
 
-            if(usuario is null){
-                return null;
-            }
+            if(usuario is null)
+            throw new UsuarioNaoEncontradoException("Usuario não encontrado ou inexistente");
 
             //atualização parcial se o campo não foi fornecido, mantem valor atual
             var nome = !string.IsNullOrWhiteSpace(dto.Nome)
@@ -74,12 +77,18 @@ namespace CoFinanceControl.Application.Usuarios.Services
 
         public async Task<bool> DeletarAsync(Guid id, CancellationToken cancellationToken = default)
         {
+            var usuario = await _usuarioRepository.ObterPorIdAsync(id, cancellationToken);
+
+            if (usuario is null)
+            throw new UsuarioNaoEncontradoException("Usuario não encontrado ou inexistente");
+
             return await _usuarioRepository.DeletarAsync(id, cancellationToken);
         }
 
         public async Task<IEnumerable<UsuarioDto>> ObterTodosAsync (CancellationToken cancellationToken = default)
         {
             var usuarios = await _usuarioRepository.ObterTodosAsync(cancellationToken);
+
             return usuarios.Select(MapearParaDto).ToList();
         }
 
