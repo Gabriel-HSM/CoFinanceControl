@@ -17,7 +17,15 @@ namespace CoFinanceControl.WebApi.Middleware
             {
                 await _next(context);
             }
+            catch (DomainExeption ex)
+            {
+                await WriteError(context, StatusCodes.Status404NotFound, ex.Message);
+            }
             catch (UsuarioNaoEncontradoException ex)
+            {
+                await WriteError(context, StatusCodes.Status404NotFound, ex.Message);
+            }
+            catch (CategoriaNaoEncontadoExeption ex)
             {
                 await WriteError(context, StatusCodes.Status404NotFound, ex.Message);
             }

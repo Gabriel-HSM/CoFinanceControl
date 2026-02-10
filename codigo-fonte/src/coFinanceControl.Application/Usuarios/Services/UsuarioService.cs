@@ -55,6 +55,12 @@ namespace CoFinanceControl.Application.Usuarios.Services
             if(usuario is null)
             throw new UsuarioNaoEncontradoException("Usuario não encontrado ou inexistente");
 
+            if (!string.IsNullOrWhiteSpace(dto.Nome) && dto.Nome.Length < 3)
+            throw new DomainExeption("O nome deve ter no mínimo 3 caracteres");
+
+            if (!string.IsNullOrWhiteSpace(dto.Sobrenome) && dto.Sobrenome.Length < 3)
+            throw new DomainExeption("O sobrenome deve ter no mínimo 3 caracteres");
+
             //atualização parcial se o campo não foi fornecido, mantem valor atual
             var nome = !string.IsNullOrWhiteSpace(dto.Nome)
                 ? new PrimeiroNome(dto.Nome)

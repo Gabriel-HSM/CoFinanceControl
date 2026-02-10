@@ -352,6 +352,10 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 | Responsável pela execução do caso de Teste | Gabriel Henrique |
 ---
 
+## Avaliação ATUALIZAR
+
+
+
 ## Observações Gerais
 
 - **Taxa de sucesso**: 29/33 casos aprovados (89%)
