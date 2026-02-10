@@ -103,10 +103,10 @@ https://localhost:5001/swagger
 
 | Módulo | Responsável | Status | Endpoints |
 | --- | --- | --- | --- |
-| Usuários | Gabriel Henrique | ✅ Concluído | POST, GET, PUT, DELETE `/api/Usuario` |
-| Categorias | Gabriel Henrique | ✅ Concluído | POST, GET, PUT, DELETE `/api/Categoria` |
-| Transações | Gabriel Henrique | 🚧 Em desenvolvimento | POST, GET `/api/Transacao` |
-| Rateios | Gabriel Henrique | 🚧 Em desenvolvimento | Vinculado a Transações |
+| Usuários | Gabriel Henrique | ✅ Concluído | POST, GET, PUT, DELETE `/api/Users` |
+| Categorias | Gabriel Henrique | ✅ Concluído | POST, GET, PUT, DELETE `/api/Categorias` |
+| Transações | Gabriel Henrique | ✅ Concluído | POST, GET (all/id), PUT, DELETE `/api/Transacao` |
+| Rateios | Gabriel Henrique | ✅ Integrado | Vinculado a Transações (criação/atualização) |
 
 ## Funcionalidades Principais
 
@@ -168,8 +168,20 @@ A documentação completa está disponível via Swagger após executar a aplica�
 - Melhorias no CRUD de Categorias
 - Aprimoramentos no CRUD de Usuários
 
+### [1.0.2] - 10/02/2026
+
+#### Adicionado
+- Implementação completa do CRUD de Transações com todos os endpoints (POST, GET, PUT, DELETE)
+- Integração completa do sistema de Rateios com Transações
+- Estrutura de DTOs para Rateios (CriarRateioDto, RateioDto)
+- Validações de transações usando Value Objects
+
+#### Melhorias
+- Estrutura de services e repositories completa para Transações
+- Suporte a múltiplos rateios por transação
+
 #### Pendente
 - Implementação de autenticação JWT
-- Validação de soma dos rateios
-- Migrations para PostgreSQL
+- Validação de soma dos rateios (100%)
 - Testes unitários e de integração
+- Deploy em ambiente de produção
