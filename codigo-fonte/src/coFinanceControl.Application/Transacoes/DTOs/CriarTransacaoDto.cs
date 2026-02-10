@@ -13,6 +13,6 @@ namespace CoFinanceControl.Application.Transacoes.DTOs
         [MinLength(5, ErrorMessage = "A descrição deve ter no mínimo 5 caracteres")]
         public required string Descricao { get; init; }
         [Required(ErrorMessage = "A transação deve ter uma categoria e destino (rateio).")]
-        public List<CriarRateioDto>? Rateios { get; init; }
+        public required List<CriarRateioDto>? Rateios { get; init; }
     }
 }

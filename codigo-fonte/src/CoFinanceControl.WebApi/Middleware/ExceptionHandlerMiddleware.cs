@@ -29,6 +29,10 @@ namespace CoFinanceControl.WebApi.Middleware
             {
                 await WriteError(context, StatusCodes.Status404NotFound, ex.Message);
             }
+            catch (TransacaoNaoEncontradaExeption ex)
+            {
+                await WriteError(context, StatusCodes.Status404NotFound, ex.Message);
+            }
             catch (Exception)
             {
                 await WriteError(context,StatusCodes.Status500InternalServerError, "ErroInternoDoServidor");

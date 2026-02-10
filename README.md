@@ -6,7 +6,7 @@
 
 `2025`
 
-**Versão:** 1.0.0 (MVP)
+**Versão:** 1.0.2 (MVP)
 
 O projeto consiste no desenvolvimento de um sistema de controle financeiro que permite a pessoas físicas e jurídicas registrar, organizar e analisar suas movimentações financeiras de forma simples, segura e eficiente. A aplicação possibilita o controle de entradas e saídas, categorização de despesas, utilização de tags, parcelamento de transações e geração de relatórios, oferecendo ao usuário uma visão clara de como seu dinheiro está sendo utilizado.
 
