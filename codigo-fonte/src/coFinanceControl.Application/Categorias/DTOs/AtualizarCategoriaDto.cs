@@ -9,7 +9,6 @@ namespace CoFinanceControl.Application.Categorias.DTOs
         public string? Nome { get; init; }
         [MaxLength(155, ErrorMessage = "A descrição deve ter no máximo 50 caracteres")]
         public string? Descricao { get; init; }
-        public Guid? UsuarioId { get; init; }
         public string? Icone { get; init; }
     }
 }
