@@ -46,6 +46,9 @@ namespace CoFinanceControl.WebApi.Controllers
             [FromBody] AtualizarUsuarioDto dto,
             CancellationToken cancellationToken = default)
         {
+            if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+            
             var atualizado = await _service.AtualizarAsync(id, dto, cancellationToken);
 
             if (atualizado is null)
