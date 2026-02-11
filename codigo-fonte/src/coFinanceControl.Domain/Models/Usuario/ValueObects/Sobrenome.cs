@@ -32,7 +32,7 @@ namespace CoFinanceControl.Domain.Models.Usuario.ValueObects
                 throw new ArgumentException("Sobrenome contém caracteres inválidos");
             }
 
-            Valor = valor;
+            Valor = valor.Trim();
         }
 
         public override string ToString() => Valor;

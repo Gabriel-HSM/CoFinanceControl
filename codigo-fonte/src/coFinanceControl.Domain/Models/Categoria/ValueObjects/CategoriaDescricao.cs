@@ -31,7 +31,7 @@ namespace CoFinanceControl.Domain.Models.Categoria.ValueObjects
                 throw new ArgumentException("Nome contém caracteres inválidos");      
             }
 
-            Valor = valor;
+            Valor = valor.Trim();
         }
         public override string ToString() => Valor;
         public static implicit operator string(CategoriaDescricao categoriaDescricao) => categoriaDescricao.Valor;

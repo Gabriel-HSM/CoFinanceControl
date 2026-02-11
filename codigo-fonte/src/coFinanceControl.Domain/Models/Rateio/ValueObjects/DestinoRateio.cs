@@ -8,7 +8,7 @@ namespace CoFinanceControl.Domain.Models.Rateios{
             if (string.IsNullOrWhiteSpace(valor))
             throw new ArgumentNullException("Destino do rateio é obrigatório.", nameof(valor));
 
-            Valor = valor;
+            Valor = valor.Trim();
         }
 
         public override string ToString() => Valor;

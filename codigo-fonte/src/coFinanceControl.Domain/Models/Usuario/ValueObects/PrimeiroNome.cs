@@ -32,7 +32,7 @@ namespace CoFinanceControl.Domain.Models.Usuario.ValueObects
             if (!RegexNome.IsMatch(valor))
             throw new ArgumentException("Nome contém caracteres inválidos");
 
-            Valor = valor;
+            Valor = valor.Trim();
         }
 
         //Ao chamar o Valor do sobrenome, retorna seu valor em si, e não o objeto

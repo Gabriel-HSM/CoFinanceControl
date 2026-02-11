@@ -22,7 +22,7 @@ namespace CoFinanceControl.Domain.Models.Transacao.ValueObjects
                 throw new ArgumentOutOfRangeException("A descrição não deve ter mais de 155 caracteres", nameof(valor));
             }
 
-            Valor = valor;
+            Valor = valor.Trim();
         }
 
         public override string ToString() => Valor;
