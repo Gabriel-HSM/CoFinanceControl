@@ -19,7 +19,7 @@ namespace CoFinanceControl.Domain.Models.Credencial.ValueObjects
 
             if (valorTrim.Length > 255)
             {
-                throw new ArgumentException("O email não pode exceder 100 caracteres", nameof(valor));
+                throw new ArgumentException("O email não pode exceder 255 caracteres", nameof(valor));
             }
 
             if (!RegexEmail.IsMatch(valorTrim))

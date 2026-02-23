@@ -4,7 +4,7 @@ namespace CoFinanceControl.Domain.Models.Credencial
 {
     public sealed class Credencial
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public Guid UsuarioId { get; set; }
         public required Email Email { get; set; }
         public required Senha SenhaHash { get; set; }
@@ -14,7 +14,7 @@ namespace CoFinanceControl.Domain.Models.Credencial
 
         private Credencial(){}
 
-        public static Credencial Criar(int id, Guid usuarioId, Email email, Senha senhaHash)
+        public static Credencial Criar(Guid id, Guid usuarioId, Email email, Senha senhaHash)
         {
             return new Credencial
             {
