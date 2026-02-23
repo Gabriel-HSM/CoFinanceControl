@@ -1,6 +1,6 @@
 namespace CoFinanceControl.Application.Credencial.DTOs
 {
-    public sealed record class Credencial
+    public sealed record Credencial
     {
         public int Id { get; init; }
         public Guid UsuarioId { get; init; }
