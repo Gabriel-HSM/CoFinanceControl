@@ -25,6 +25,10 @@ Transacao:
 - validações extras em Valor, a que possui agora acredito ser insuficiente
 -permitir descrição nulla
 
+Credencial:
+- SenhaHash
+- GoogleId
+
 Lembretes:
 1. Testes
 2. Throws
