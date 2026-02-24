@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using CoFinanceControl.Application.Validations;
+using CoFinanceControl.Domain.Enums;
 
 namespace CoFinanceControl.Application.Usuarios.DTOs
 {
@@ -20,6 +21,7 @@ namespace CoFinanceControl.Application.Usuarios.DTOs
         public required string Sobrenome { get; init; }
         [DataNascimentoValidate(ErrorMessage = "A data de nascimento não deve ser uma data futura")]
         public DateOnly? DataNascimento { get; init; }
+        public Cargo Cargo { get; init; }
 
         //Não espera dataCriação porque é interno (usuario não passa)
         

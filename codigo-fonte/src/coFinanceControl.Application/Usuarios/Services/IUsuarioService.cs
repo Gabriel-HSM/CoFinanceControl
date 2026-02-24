@@ -10,7 +10,11 @@ namespace CoFinanceControl.Application.Usuarios.Services
 
         Task<UsuarioDto?> ObterPorIdAsync(Guid id, CancellationToken cancellationToken = default);
 
-        Task<UsuarioDto?> AtualizarAsync (Guid id, AtualizarUsuarioDto dto, CancellationToken cancellationToken = default);
+        // Usuário atualiza a si mesmo (sem cargo)
+        Task<UsuarioDto?> AtualizarMeuPerfilAsync (AtualizarMeuUsuarioDto dto, CancellationToken cancellationToken = default);
+
+        // Admin atualiza outro usuário (pode alterar cargo)
+        Task<UsuarioDto?> AtualizarOutroUsuarioAsync (Guid id, AtualizarOutroUsuarioDto dto, CancellationToken cancellationToken = default);
 
         Task<bool> DeletarAsync (Guid id, CancellationToken cancellationToken = default);
 

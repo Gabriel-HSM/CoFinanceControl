@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CoFinanceControl.Application.Credencial.DTOs
+namespace CoFinanceControl.Application.Credenciais.DTOs
 {
     public sealed record AtualizarCredencialDto
     {

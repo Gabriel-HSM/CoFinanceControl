@@ -10,10 +10,8 @@ Futuras implementações para:
 * Relatórios
 
 Usuario:
-- validação se tem caracter especial em Nome e sobrenome ✅
-- adicionar Tipo pessoa (pf e pj)
-- validação se possui numeros (verificando se faz sentido)
-- Trim
+- ObterUsuarioPorEmail
+- ENUM CARGO
 
 Categoria:
 - validação se tem caracter especial em Nome
@@ -29,8 +27,18 @@ Credencial:
 - SenhaHash
 - GoogleId
 
+EntidadeFinanceira
+- Desativar e etc
+
 Lembretes:
 1. Testes
 2. Throws
 3. Trim
 4. JWT
+
+
+
+
+Não esquecer----
+
+Validações de Login/criarAutentificação
