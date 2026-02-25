@@ -500,20 +500,173 @@ Os testes funcionais a serem realizados na aplicação são descritos a seguir.
 
 <br>
 
+---
+
+## Autenticação
+
+<br>
+
+| **Caso de Teste** 	| **CT-50 – Registrar nova conta com dados válidos** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - A aplicação deve permitir ao usuário cadastrar uma conta. |
+| Objetivo do Teste 	| Verificar se o sistema cria uma Entidade Financeira, usuário Admin e credencial, retornando um token JWT. |
+| Passos 	| - Acessar `POST /api/Autentificacao/registrar` <br> - Preencher os campos obrigatórios (nome, sobrenome, email, senha, nomeEntidade, tipoEntidade) <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 201 Created <br> - A resposta deve conter `token`, `usuarioId` e `entidadeFinanceiraId`. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-51 – Tentar registrar com email já cadastrado** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - A aplicação deve permitir ao usuário cadastrar uma conta. |
+| Objetivo do Teste 	| Verificar se o sistema impede o cadastro com email duplicado. |
+| Passos 	| - Acessar `POST /api/Autentificacao/registrar` <br> - Informar um email já existente no sistema <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 400 Bad Request <br> - Uma mensagem de erro deve informar que o email já está em uso. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-52 – Tentar registrar com senha fora do padrão** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - A aplicação deve permitir ao usuário cadastrar uma conta. |
+| Objetivo do Teste 	| Verificar se o sistema valida o formato da senha (mínimo 8 caracteres, letras e números). |
+| Passos 	| - Acessar `POST /api/Autentificacao/registrar` <br> - Preencher o campo senha com valor inválido (ex: "abc") <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 400 Bad Request <br> - Uma mensagem de erro deve descrever o formato esperado da senha. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-53 – Realizar login com credenciais válidas** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - A aplicação deve permitir ao usuário autenticar-se. |
+| Objetivo do Teste 	| Verificar se o sistema autentica o usuário e retorna um token JWT válido. |
+| Passos 	| - Acessar `POST /api/Autentificacao/login` <br> - Informar email e senha cadastrados <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 200 OK <br> - A resposta deve conter `token`, `usuarioId` e `entidadeFinanceiraId`. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-54 – Tentar login com senha incorreta** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - A aplicação deve permitir ao usuário autenticar-se. |
+| Objetivo do Teste 	| Verificar se o sistema rejeita credenciais com senha errada. |
+| Passos 	| - Acessar `POST /api/Autentificacao/login` <br> - Informar email válido e senha incorreta <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 400 Bad Request <br> - Uma mensagem de erro deve indicar credenciais inválidas. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-55 – Tentar login com email inexistente** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - A aplicação deve permitir ao usuário autenticar-se. |
+| Objetivo do Teste 	| Verificar se o sistema retorna 404 para email não cadastrado. |
+| Passos 	| - Acessar `POST /api/Autentificacao/login` <br> - Informar um email não cadastrado no sistema <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 404 Not Found <br> - Uma mensagem deve informar que o email não foi encontrado. |
+|  	|  	|
+
+<br>
+
+---
+
+## Autorização (JWT)
+
+<br>
+
+| **Caso de Teste** 	| **CT-56 – Acessar endpoint protegido sem token** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - A aplicação deve controlar o acesso via autenticação. |
+| Objetivo do Teste 	| Verificar se o sistema bloqueia acesso a endpoints protegidos sem autenticação. |
+| Passos 	| - Acessar `GET /api/entidadefinanceira` **sem** o header `Authorization` <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 401 Unauthorized. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-57 – Acessar endpoint de Admin com cargo insuficiente** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - A aplicação deve controlar o acesso via autorização por cargo. |
+| Objetivo do Teste 	| Verificar se o sistema bloqueia acesso a endpoints restritos a Admin quando o usuário possui cargo inferior. |
+| Passos 	| - Autenticar com usuário de cargo **não-Admin** <br> - Acessar `DELETE /api/entidadefinanceira/{id}` com o token obtido <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 403 Forbidden. |
+|  	|  	|
+
+<br>
+
+---
+
+## Entidade Financeira
+
+<br>
+
+| **Caso de Teste** 	| **CT-58 – Obter dados da Entidade Financeira autenticado** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-002 - A aplicação deve exibir os dados da entidade financeira do usuário. |
+| Objetivo do Teste 	| Verificar se o sistema retorna os dados da entidade associada ao usuário autenticado. |
+| Passos 	| - Registrar ou fazer login para obter token <br> - Acessar `GET /api/entidadefinanceira` com header `Authorization: Bearer <token>` <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 200 OK <br> - A resposta deve conter os dados da entidade financeira do usuário. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-59 – Tentar adicionar segundo usuário a entidade do tipo Solo** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-002 - A aplicação deve respeitar as restrições de tipo de entidade. |
+| Objetivo do Teste 	| Verificar se o sistema impede adicionar um segundo usuário a uma entidade Solo. |
+| Passos 	| - Registrar conta com tipo `Solo` <br> - Autenticar como Admin <br> - Acessar `POST /api/users` e tentar criar um segundo usuário <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 400 Bad Request <br> - A mensagem deve informar que entidade Solo permite apenas 1 usuário. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-60 – Alterar tipo da entidade para Solo com mais de 1 membro** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-002 - A aplicação deve validar mudança de tipo de entidade. |
+| Objetivo do Teste 	| Verificar se o sistema impede alterar para Solo quando há mais de 1 usuário na entidade. |
+| Passos 	| - Registrar conta com tipo `Familia` <br> - Adicionar um segundo usuário <br> - Autenticar como Admin <br> - Acessar `PATCH /api/entidadefinanceira/{id}/tipo` com `novoTipo: "Solo"` <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 400 Bad Request <br> - A mensagem deve informar a quantidade de membros que impedem a mudança. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-61 – Alterar tipo da entidade com sucesso** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-002 - A aplicação deve permitir ao Admin alterar o tipo da entidade. |
+| Objetivo do Teste 	| Verificar se o sistema permite alterar o tipo da entidade quando as regras são respeitadas. |
+| Passos 	| - Registrar conta com tipo `Solo` <br> - Autenticar como Admin <br> - Acessar `PATCH /api/entidadefinanceira/{id}/tipo` com `novoTipo: "Familia"` <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 200 OK <br> - O tipo da entidade deve ser atualizado para `Familia`. |
+|  	|  	|
+
+<br>
+
+| **Caso de Teste** 	| **CT-62 – Tentar alterar tipo da entidade para o mesmo tipo atual** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-002 - A aplicação deve validar mudança de tipo de entidade. |
+| Objetivo do Teste 	| Verificar se o sistema impede alterar o tipo para o mesmo valor já definido. |
+| Passos 	| - Registrar conta com tipo `Solo` <br> - Autenticar como Admin <br> - Acessar `PATCH /api/entidadefinanceira/{id}/tipo` com `novoTipo: "Solo"` <br> - Enviar a requisição |
+|Critério de Êxito | - O sistema deve retornar status 400 Bad Request <br> - A mensagem deve informar que a entidade já é do tipo informado. |
+|  	|  	|
+
+<br>
+
+---
+
 ## Resumo dos Testes
 
-| Total de Casos | Casos de Criação | Casos de Atualização | Casos de Validação |
+| Total de Casos | Casos de Criação/Autenticação | Casos de Atualização | Casos de Validação |
 |:---:|:---:|:---:|:---:|
-| 49 | 34 | 15 | 49 |
+| 62 | 37 | 17 | 62 |
 
 ### Distribuição por Entidade
 
 - **Usuário**: 10 casos (CT-01 a CT-10)
 - **Categoria**: 16 casos (CT-11 a CT-20, CT-35 a CT-40)
 - **Transação**: 23 casos (CT-21 a CT-34, CT-41 a CT-49)
+- **Autenticação**: 6 casos (CT-50 a CT-55)
+- **Autorização JWT**: 2 casos (CT-56 a CT-57)
+- **Entidade Financeira**: 5 casos (CT-58 a CT-62)
 
 ### Tipos de Teste
 
-- ✅ **Testes de Sucesso**: Casos que validam o funcionamento correto (CT-01, CT-11, CT-21, CT-25, CT-35, CT-39, CT-40, CT-41, CT-48, CT-49)
+- ✅ **Testes de Sucesso**: Casos que validam o funcionamento correto (CT-01, CT-11, CT-21, CT-25, CT-35, CT-39, CT-40, CT-41, CT-48, CT-49, CT-50, CT-53, CT-58, CT-61)
 - ❌ **Testes de Falha**: Casos que validam tratamento de erros e exceções (todos os outros casos)
-- 🔄 **Testes de Atualização Parcial**: Casos que validam PATCH (CT-39, CT-40, CT-48, CT-49)
+- 🔄 **Testes de Atualização Parcial**: Casos que validam PATCH (CT-39, CT-40, CT-48, CT-49, CT-61)

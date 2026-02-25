@@ -517,20 +517,173 @@ Os resultados dos testes funcionais realizados na aplicação são descritos a s
 
 <br>
 
+---
+
+<br>
+
+## Avaliação AUTENTICAÇÃO
+
+<br>
+
+# Autenticação
+
+<br>
+
+---
+| Caso de Teste    | CT-50 – Registrar nova conta com dados válidos |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 201 Created com token JWT, usuarioId e entidadeFinanceiraId |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 201 Created <br> - Resposta contém `token`, `usuarioId` e `entidadeFinanceiraId` <br> - EntidadeFinanceira, Usuário Admin e Credencial criados corretamente |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-51 – Tentar registrar com email já cadastrado |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request informando que o email já está em uso |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 400 Bad Request <br> - Mensagem de erro informando que o email já está em uso |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-52 – Tentar registrar com senha fora do padrão |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request com descrição do formato esperado |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 400 Bad Request <br> - Value Object `Senha` lança `DomainExeption` capturada pelo middleware → 400 |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-53 – Realizar login com credenciais válidas |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 200 OK com token JWT válido |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 200 OK <br> - Resposta contém `token`, `usuarioId` e `entidadeFinanceiraId` <br> - Token válido aceito nos endpoints protegidos |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-54 – Tentar login com senha incorreta |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request com mensagem de credenciais inválidas |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 400 Bad Request <br> - Mensagem informando credenciais inválidas (sem revelar qual campo está errado) |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-55 – Tentar login com email inexistente |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 404 Not Found |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 404 Not Found <br> - Mensagem informando que o email não foi encontrado |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+# Autorização (JWT)
+
+<br>
+
+---
+| Caso de Teste    | CT-56 – Acessar endpoint protegido sem token |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 401 Unauthorized |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 401 Unauthorized <br> - Requisição barrada pelo middleware de autenticação JWT do ASP.NET Core |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-57 – Acessar endpoint de Admin com cargo insuficiente |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 403 Forbidden |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 403 Forbidden <br> - Requisição barrada pelo atributo `[Authorize(Roles = "Admin")]` |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+# Entidade Financeira
+
+<br>
+
+---
+| Caso de Teste    | CT-58 – Obter dados da Entidade Financeira autenticado |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 200 OK com os dados da entidade |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 200 OK <br> - Dados da entidade financeira retornados corretamente usando o `EntidadeFinanceiraId` do token JWT |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-59 – Tentar adicionar segundo usuário a entidade do tipo Solo |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request informando que Solo permite apenas 1 usuário |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 400 Bad Request <br> - Mensagem: "Entidade do tipo Solo permite apenas 1 usuário. Altere o tipo da entidade antes de adicionar membros." <br> - `ArgumentException` capturada pelo middleware → 400 |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-60 – Alterar tipo da entidade para Solo com mais de 1 membro |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request informando a quantidade de membros |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 400 Bad Request <br> - Mensagem informa quantidade de usuários que impedem a mudança para Solo |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-61 – Alterar tipo da entidade com sucesso |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 200 OK e o tipo atualizado |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 200 OK <br> - Tipo da entidade atualizado corretamente de `Solo` para `Familia` |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
+---
+| Caso de Teste    | CT-62 – Tentar alterar tipo da entidade para o mesmo tipo atual |
+|:---|:---|
+| Resultado esperado | Sistema deve retornar status 400 Bad Request informando que o tipo já é o atual |
+| Resultados obtidos | ✅ **APROVADO** <br> - Status 400 Bad Request <br> - Mensagem: "A entidade já é do tipo Solo." |
+| Responsável pela execução do caso de Teste | Gabriel Henrique |
+---
+
+<br>
+
 ## Observações Gerais
 
-- **Taxa de sucesso**: 49/49 casos aprovados (100%)
+- **Taxa de sucesso**: 62/62 casos aprovados (100%)
 - **Casos pendentes**: 0
 - **Correções implementadas**: 
   - Tratamento de exceções personalizadas convertido para Bad Request (400) nos casos CT-19, CT-20, CT-26 e CT-33
   - Suporte para atualização parcial implementado nos métodos de atualização
-- **Testes executados em**: 06/02/2026
+  - `ArgumentException` mapeada para 400 no middleware (CT-59, CT-60, CT-62)
+  - `DomainExeption` corrigida de 404 para 400
+- **Testes executados em**: 25/02/2026
 - **Ambiente**: Desenvolvimento (In-Memory Database)
 
 ## Próximos Passos
 
-1. Executar testes de integração com banco de dados real
-2. Implementar testes automatizados (testes de unidade)
+1. Executar testes de integração com banco de dados real (após migrar de InMemory para SQL Server)
+2. Implementar testes automatizados (testes de unidade e integração com xUnit)
 3. Adicionar testes de deleção (DELETE)
 4. Adicionar testes de listagem e busca (GET)
 5. Implementar testes de performance e carga
+6. Adicionar testes para CredencialController (alterar email/senha)
