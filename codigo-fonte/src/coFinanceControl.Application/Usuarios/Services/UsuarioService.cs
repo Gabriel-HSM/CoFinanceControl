@@ -1,4 +1,5 @@
 using CoFinanceControl.Application.Common;
+using CoFinanceControl.Application.EntidadeFinanceiraApp.Repositories;
 using CoFinanceControl.Application.Exeptions;
 using CoFinanceControl.Application.Usuarios.DTOs;
 using CoFinanceControl.Application.Usuarios.Repositories;
@@ -14,11 +15,13 @@ namespace CoFinanceControl.Application.Usuarios.Services
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IUsuarioAutenticado _usuarioAutenticado;
+        private readonly IEntidadeFinanceiraRepository _entidadeFinanceiraRepository;
 
-        public UsuarioService(IUsuarioRepository usuarioRepository, IUsuarioAutenticado usuarioAutenticado)
+        public UsuarioService(IUsuarioRepository usuarioRepository, IUsuarioAutenticado usuarioAutenticado, IEntidadeFinanceiraRepository entidadeFinanceiraRepository)
         {
             _usuarioRepository = usuarioRepository;
             _usuarioAutenticado = usuarioAutenticado;
+            _entidadeFinanceiraRepository = entidadeFinanceiraRepository;
         }
 
         public async Task<UsuarioDto> CriarAsync(CriarUsuarioDto dto, CancellationToken cancellationToken = default)
@@ -35,10 +38,19 @@ namespace CoFinanceControl.Application.Usuarios.Services
             //Pega o EntidadeFinanceiraId do usuario autenticado
             var entidadeId = _usuarioAutenticado.EntidadeFinanceiraId;
 
+            //Busca a entidade financeira (já carrega a coleção de Usuarios para validação)
+            var entidade = await _entidadeFinanceiraRepository.ObterPorIdAsync(entidadeId, cancellationToken);
+
+            if (entidade is null)
+                throw new EntidadeFinanceiraNaoEncontradaException("Entidade não encontrada ou inexistente");
+
             //Cria o usuario
             var usuario = Usuario.Criar(nome, sobrenome, dataNascimento, entidadeId, cargo);
 
-            //"Adiciona no banco"
+            //Valida regra de negócio (ex: Solo só permite 1 usuário) e adiciona à coleção
+            entidade.AdicionarUsuario(usuario);
+
+            //Persiste o usuario no banco
             await _usuarioRepository.AdicionarAsync(usuario, cancellationToken);
 
             //retorna DTO mapeado

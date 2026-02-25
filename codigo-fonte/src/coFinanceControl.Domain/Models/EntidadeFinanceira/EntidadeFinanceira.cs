@@ -1,5 +1,6 @@
 using CoFinanceControl.Domain.Enums;
 using CoFinanceControl.Domain.Models.EntidadeFinanceira.ValueObjects;
+using UsuarioM = CoFinanceControl.Domain.Models.Usuario.Usuario;
 
 namespace CoFinanceControl.Domain.Models.EntidadeFinanceira
 {
@@ -13,6 +14,7 @@ namespace CoFinanceControl.Domain.Models.EntidadeFinanceira
         public DateTime DataCriacao { get; private set; } 
         public bool Ativo { get; private set; } 
         public DateTime? DataDesativacao { get; private set; } 
+        public ICollection<UsuarioM> Usuarios { get; set; } = new List<UsuarioM>();
 
         private EntidadeFinanceira() {}
 
@@ -41,6 +43,16 @@ namespace CoFinanceControl.Domain.Models.EntidadeFinanceira
         {
             Ativo = true;
             DataDesativacao = null;
+        }
+
+        public void AdicionarUsuario(UsuarioM usuario)
+        {
+            if (TipoEntidade == TipoEntidade.Solo)
+            {
+                throw new ArgumentException("Não é possivel adicionar outros usuarios se a entidade for solo/pf");
+            }
+
+            Usuarios.Add(usuario);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace CoFinanceControl.Application.EntidadeFinanceiraApp.Repositories
         Task AdicionarAsync(EntidadeFinanceira entidadeFinanceira, CancellationToken ct = default);
         Task<EntidadeFinanceira?> ObterPorIdAsync(Guid id, CancellationToken ct = default);
         Task AtualizarAsync(EntidadeFinanceira entidadeFinanceira, CancellationToken ct = default);
-        Task InativarAsync(Guid id, CancellationToken ct = default);
+        Task<bool> InativarAsync(Guid id, CancellationToken ct = default);
     }
 }

@@ -1,5 +1,7 @@
 using CoFinanceControl.Domain.Models.Categoria;
 using CoFinanceControl.Domain.Models.Categoria.ValueObjects;
+using CoFinanceControl.Domain.Models.EntidadeFinanceira;
+using CoFinanceControl.Domain.Models.EntidadeFinanceira.ValueObjects;
 using CoFinanceControl.Domain.Models.Rateios;
 using CoFinanceControl.Domain.Models.Transacao;
 using CoFinanceControl.Domain.Models.Transacao.ValueObjects;
@@ -16,6 +18,7 @@ namespace CoFinanceControl.Infrastructure.Data
         }
 
         //Criação das tabelas
+        public DbSet<EntidadeFinanceira> EntidadesFinanceiras => Set<EntidadeFinanceira>();
         public DbSet<Usuario> Usuarios => Set<Usuario>();
         public DbSet<Categoria> Categorias => Set<Categoria>();
         public DbSet<Transacao> Transacoes => Set<Transacao>();
@@ -26,10 +29,41 @@ namespace CoFinanceControl.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<EntidadeFinanceira>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Nome)
+                    .HasConversion(
+                        nome => nome.Valor,
+                        valor => new EntidadeNome(valor))
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                entity.Property(e => e.TipoEntidade)
+                    .HasConversion<int>()
+                    .IsRequired();
+
+                entity.Property(e => e.DataCriacao)
+                    .IsRequired();
+
+                entity.Property(e => e.Ativo)
+                    .IsRequired();
+
+                entity.Property(e => e.DataDesativacao);
+            });
+
+            //Usuarios
+
             modelBuilder.Entity<Usuario>(entity =>
             {
                 //chave primaria
                 entity.HasKey(u => u.Id);
+
+                entity.HasOne<EntidadeFinanceira>()
+                    .WithMany(e => e.Usuarios)
+                    .HasForeignKey(u => u.EntidadeFinanceiraId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
                 //tratamento de VOs
                 entity.Property(u => u.Nome)
@@ -56,6 +90,8 @@ namespace CoFinanceControl.Infrastructure.Data
                 .IsRequired();
 
                 entity.Property(u => u.DataAtualizacao);
+
+                entity.HasIndex(u => u.EntidadeFinanceiraId);
 
             });
 
