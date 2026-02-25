@@ -19,7 +19,7 @@ namespace CoFinanceControl.WebApi.Middleware
             }
             catch (DomainExeption ex)
             {
-                await WriteError(context, StatusCodes.Status404NotFound, ex.Message);
+                await WriteError(context, StatusCodes.Status400BadRequest, ex.Message);
             }
             catch (UsuarioNaoEncontradoException ex)
             {
@@ -33,16 +33,24 @@ namespace CoFinanceControl.WebApi.Middleware
             {
                 await WriteError(context, StatusCodes.Status404NotFound, ex.Message);
             }
+            catch (EntidadeFinanceiraNaoEncontradaException ex)
+            {
+                await WriteError(context, StatusCodes.Status404NotFound, ex.Message);
+            }
+            catch (EntidadeFinanceiraInativaException ex)
+            {
+                await WriteError(context, StatusCodes.Status400BadRequest, ex.Message);
+            }
             catch (Exception)
             {
-                await WriteError(context,StatusCodes.Status500InternalServerError, "ErroInternoDoServidor");
+                await WriteError(context, StatusCodes.Status500InternalServerError, "ErroInternoDoServidor");
             }
         }
 
         private async Task WriteError(HttpContext context, int statusCode, string message)
         {
             context.Response.StatusCode = statusCode;
-            context.Response.ContentType = "applicarion/json";
+            context.Response.ContentType = "application/json";
             
             await context.Response.WriteAsJsonAsync(new {
                 erro = message
