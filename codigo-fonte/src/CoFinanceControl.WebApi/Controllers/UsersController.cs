@@ -35,16 +35,34 @@ namespace CoFinanceControl.WebApi.Controllers
             return Ok(usuario);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> AtualizarUsuario(
-            [FromRoute] Guid id,
-            [FromBody] AtualizarUsuarioDto dto,
+        [HttpPut]
+        public async Task<IActionResult> AtualizarMeuUsuario(
+            [FromBody] AtualizarMeuUsuarioDto dto,
             CancellationToken cancellationToken = default)
         {
             if (!ModelState.IsValid)
             return BadRequest(ModelState);
             
-            var atualizado = await _service.AtualizarAsync(id, dto, cancellationToken);
+            var atualizado = await _service.AtualizarMeuPerfilAsync(dto, cancellationToken);
+
+            if (atualizado is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(atualizado);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarOutroUsuario(
+            [FromRoute] Guid id,
+            [FromBody] AtualizarOutroUsuarioDto dto,
+            CancellationToken cancellationToken = default)
+        {
+            if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+            
+            var atualizado = await _service.AtualizarOutroUsuarioAsync(id, dto, cancellationToken);
 
             if (atualizado is null)
             {
