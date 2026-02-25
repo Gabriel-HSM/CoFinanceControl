@@ -1,4 +1,5 @@
 using CoFinanceControl.Application.Categorias.Services;
+using CoFinanceControl.Application.EntidadeFinanceiraApp.Services;
 using CoFinanceControl.Application.Transacoes.Services;
 using CoFinanceControl.Application.Usuarios.Services;
 using CoFinanceControl.Infrastructure.Extensions;
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<ITransacaoService, TransacaoService>();
+builder.Services.AddScoped<IEntidadeFinanceiraService, EntidadeFinanceiraService>();
 
 //Registrar Infra
 builder.Services.AddInfrastructure(builder.Configuration);
