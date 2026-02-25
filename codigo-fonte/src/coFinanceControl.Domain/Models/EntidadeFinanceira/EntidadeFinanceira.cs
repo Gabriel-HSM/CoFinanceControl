@@ -48,11 +48,20 @@ namespace CoFinanceControl.Domain.Models.EntidadeFinanceira
         public void AdicionarUsuario(UsuarioM usuario)
         {
             if (TipoEntidade == TipoEntidade.Solo)
-            {
-                throw new ArgumentException("Não é possivel adicionar outros usuarios se a entidade for solo/pf");
-            }
+                throw new ArgumentException("Entidade do tipo Solo permite apenas 1 usuário. Altere o tipo da entidade antes de adicionar membros.");
 
             Usuarios.Add(usuario);
+        }
+
+        public void AlterarTipo(TipoEntidade novoTipo)
+        {
+            if (TipoEntidade == novoTipo)
+                throw new ArgumentException($"A entidade já é do tipo {novoTipo}.");
+
+            if (novoTipo == TipoEntidade.Solo && Usuarios.Count > 1)
+                throw new ArgumentException($"Não é possível alterar para Solo pois a entidade possui {Usuarios.Count} usuários. Remova os membros extras antes.");
+
+            TipoEntidade = novoTipo;
         }
     }
 }

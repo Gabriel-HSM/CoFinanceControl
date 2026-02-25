@@ -3,42 +3,47 @@ indice:
 ! = importante
 - = lista
 * = topicos futuros
+✅ = implementado
+⏳ = pendente
 
-Futuras implementações para:
+---
 
-* Autentificação
-* Relatórios
+## Módulos Implementados (v1.1.0)
+
+✅ Autentificação (JWT Bearer + BCrypt + RBAC)
+✅ EntidadeFinanceira (Criar, Atualizar, Desativar, Reativar, AlterarTipo)
+✅ Credencial (Email/Senha com BCrypt hash, OAuth preparado)
+✅ JWT com claims: UsuarioId, EntidadeFinanceiraId, Cargo
+✅ Autorização baseada em Cargo (Admin, GerenteFinanceiro, AnalistaFinanceiro, Contador, OperadorFinanceiro)
+✅ Token gerado automaticamente no registro (POST /registrar)
+✅ Middleware de exceções (400, 404, 500)
+
+---
+
+## Pendências
 
 Usuario:
-- ObterUsuarioPorEmail
-- ENUM CARGO
+- ⏳ ObterUsuarioPorEmail
+- ⏳ trim nos campos de texto
 
 Categoria:
-- validação se tem caracter especial em Nome
-- validação se possui numeros (verificando se faz sentido)
-- obter usuario por categoria?
-- trim
+- ⏳ validação se possui numeros em Nome (verificar se faz sentido)
+- ⏳ obter categorias por usuário
+- ⏳ trim nos campos de texto
 
 Transacao:
-- validações extras em Valor, a que possui agora acredito ser insuficiente
--permitir descrição nulla
+- ⏳ validações extras em Valor (além de > 0)
+- ⏳ permitir descrição nula
 
 Credencial:
-- SenhaHash
-- GoogleId
+- ⏳ GoogleId (OAuth via Google — futuro)
+- ⏳ CredencialController (alterar email/senha pelo usuário autenticado)
 
-EntidadeFinanceira
-- Desativar e etc
-
-Lembretes:
-1. Testes
-2. Throws
-3. Trim
-4. JWT
-
-
-
-
-Não esquecer----
-
-Validações de Login/criarAutentificação
+Geral:
+- ⏳ Testes unitários automatizados
+- ⏳ Trim
+- ⏳ Migrar de InMemory para SQL Server (Migrations)
+- ⏳ Relatórios financeiros
+- ⏳ Filtros e paginação nas listagens
+- ⏳ Logs estruturados
+- ⏳ Deploy em ambiente de produção

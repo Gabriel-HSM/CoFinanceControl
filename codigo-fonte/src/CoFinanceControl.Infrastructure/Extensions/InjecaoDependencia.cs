@@ -1,4 +1,5 @@
 using CoFinanceControl.Application.Categorias.Repositories;
+using CoFinanceControl.Application.Credenciais.Repositories;
 using CoFinanceControl.Application.EntidadeFinanceiraApp.Repositories;
 using CoFinanceControl.Application.Transacoes.Repositories;
 using CoFinanceControl.Application.Usuarios.Repositories;
@@ -24,6 +25,7 @@ namespace CoFinanceControl.Infrastructure.Extensions
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ITransacaoRepository, TransacaoRepository>();
             services.AddScoped<IEntidadeFinanceiraRepository, EntidadeFinanceiraRepository>();
+            services.AddScoped<ICredencialRepository, CredencialRepository>();
 
             return services;
         }

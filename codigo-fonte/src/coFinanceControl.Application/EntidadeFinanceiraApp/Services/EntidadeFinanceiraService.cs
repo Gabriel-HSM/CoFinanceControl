@@ -62,6 +62,20 @@ namespace CoFinanceControl.Application.EntidadeFinanceiraApp.Services
             return true;
         }
 
+        public async Task<EntidadeFinanceiraDto> AlterarTipoEntidadeAsync(Guid id, AlterarTipoEntidadeDto dto, CancellationToken ct = default)
+        {
+            var entidade = await _entidadeFinanceiraRepository.ObterPorIdAsync(id, ct);
+
+            if (entidade is null)
+                throw new EntidadeFinanceiraNaoEncontradaException("Entidade financeira não encontrada.");
+
+            entidade.AlterarTipo(dto.NovoTipo);
+
+            await _entidadeFinanceiraRepository.AtualizarAsync(entidade, ct);
+
+            return MapearParaDto(entidade);
+        }
+
         private static EntidadeFinanceiraDto MapearParaDto(EntidadeFinanceira entidadeFinanceira)
         {
             return new EntidadeFinanceiraDto

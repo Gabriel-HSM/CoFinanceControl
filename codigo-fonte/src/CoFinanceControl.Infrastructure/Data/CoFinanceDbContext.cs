@@ -1,5 +1,7 @@
 using CoFinanceControl.Domain.Models.Categoria;
 using CoFinanceControl.Domain.Models.Categoria.ValueObjects;
+using CoFinanceControl.Domain.Models.Credencial;
+using CoFinanceControl.Domain.Models.Credencial.ValueObjects;
 using CoFinanceControl.Domain.Models.EntidadeFinanceira;
 using CoFinanceControl.Domain.Models.EntidadeFinanceira.ValueObjects;
 using CoFinanceControl.Domain.Models.Rateios;
@@ -20,6 +22,7 @@ namespace CoFinanceControl.Infrastructure.Data
         //Criação das tabelas
         public DbSet<EntidadeFinanceira> EntidadesFinanceiras => Set<EntidadeFinanceira>();
         public DbSet<Usuario> Usuarios => Set<Usuario>();
+        public DbSet<Credencial> Credenciais => Set<Credencial>();
         public DbSet<Categoria> Categorias => Set<Categoria>();
         public DbSet<Transacao> Transacoes => Set<Transacao>();
         public DbSet<Rateio> Rateios => Set<Rateio>();
@@ -202,6 +205,46 @@ namespace CoFinanceControl.Infrastructure.Data
 
                 entity.HasIndex(r => r.TransacaoId);
                 entity.HasIndex(r => r.CategoriaId);
+            });
+
+            //Credencial
+
+            modelBuilder.Entity<Credencial>(entity =>
+            {
+                entity.HasKey(c => c.Id);
+
+                entity.HasOne<Usuario>()
+                    .WithOne()
+                    .HasForeignKey<Credencial>(c => c.UsuarioId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.Property(c => c.Email)
+                    .HasConversion(
+                        email => email.Valor,
+                        valor => new Email(valor))
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(c => c.SenhaHash)
+                    .HasConversion(
+                        senha => senha.HasValue ? senha.Value.Valor : null,
+                        valor => valor != null ? Senha.DeHash(valor) : (Senha?)null)
+                    .HasMaxLength(255);
+
+                entity.Property(c => c.ResponsavelAutenticacao)
+                    .HasConversion<int>()
+                    .IsRequired();
+
+                entity.Property(c => c.ResponsavelAutenticacaoId)
+                    .HasMaxLength(255);
+
+                entity.Property(c => c.DataCriacao)
+                    .IsRequired();
+
+                entity.Property(c => c.DataAtualizacao);
+
+                entity.HasIndex(c => c.Email).IsUnique();
+                entity.HasIndex(c => c.UsuarioId).IsUnique();
             });
         }
     }

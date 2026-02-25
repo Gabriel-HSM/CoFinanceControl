@@ -7,59 +7,83 @@ O projeto segue os princípios de **Clean Architecture**, com separação clara 
 ```
 codigo-fonte/
 └─ src/
-   ├─ CoFinanceControl.Domain/        # Entidades e Value Objects
-   │  ├─ Entities/
-   │  │  ├─ Usuario.cs
-   │  │  ├─ Categoria.cs
-   │  │  ├─ Transacao.cs
-   │  │  └─ TransacaoCategoria.cs
-   │  └─ Exceptions/
-   │     └─ CustomExceptions.cs
+   ├─ CoFinanceControl.Domain/          # Entidades, Value Objects e Enums
+   │  ├─ Models/
+   │  │  ├─ Usuario/
+   │  │  ├─ Categoria/
+   │  │  ├─ Transacao/
+   │  │  ├─ Rateio/
+   │  │  ├─ EntidadeFinanceira/
+   │  │  └─ Credencial/
+   │  │     └─ ValueObjects/
+   │  │        └─ Senha.cs
+   │  └─ Enums/
+   │     ├─ Cargo.cs
+   │     ├─ TipoEntidade.cs
+   │     └─ ProvedorAutenticacao.cs
    │
-   ├─ CoFinanceControl.Application/   # Casos de uso, DTOs e contratos
+   ├─ CoFinanceControl.Application/     # Casos de uso, DTOs e contratos
+   │  ├─ Autentificacao/
+   │  │  ├─ Services/
+   │  │  │  └─ AutentificacaoService.cs
+   │  │  └─ DTOs/
+   │  │     ├─ CriarAutentificacaoDto.cs
+   │  │     ├─ LoginDto.cs
+   │  │     └─ ResultadoAutentificacaoDto.cs
+   │  ├─ EntidadeFinanceiraApp/
+   │  │  ├─ Services/
+   │  │  │  └─ EntidadeFinanceiraService.cs
+   │  │  ├─ DTOs/
+   │  │  │  ├─ AtualizarEntidadeDto.cs
+   │  │  │  └─ AlterarTipoEntidadeDto.cs
+   │  │  └─ Repositories/
+   │  │     └─ IEntidadeFinanceiraRepository.cs
+   │  ├─ Credenciais/
+   │  │  └─ Repositories/
+   │  │     └─ ICredencialRepository.cs
    │  ├─ Usuarios/
    │  │  ├─ Services/
    │  │  │  └─ UsuarioService.cs
    │  │  ├─ DTOs/
-   │  │  │  ├─ CriarUsuarioDto.cs
-   │  │  │  └─ UsuarioDto.cs
    │  │  └─ Repositories/
    │  │     └─ IUsuarioRepository.cs
    │  ├─ Categorias/
    │  │  ├─ Services/
    │  │  │  └─ CategoriaService.cs
    │  │  ├─ DTOs/
-   │  │  │  ├─ CriarCategoriaDto.cs
-   │  │  │  ├─ AtualizarCategoriaDto.cs
-   │  │  │  └─ CategoriaDto.cs
    │  │  └─ Repositories/
    │  │     └─ ICategoriaRepository.cs
    │  └─ Transacoes/
    │     ├─ Services/
    │     │  └─ TransacaoService.cs
    │     ├─ DTOs/
-   │     │  ├─ CriarTransacaoDto.cs
-   │     │  ├─ AtualizarTransacaoDto.cs
-   │     │  ├─ TransacaoDto.cs
-   │     │  └─ RateioDto.cs
    │     └─ Repositories/
    │        └─ ITransacaoRepository.cs
    │
-   ├─ CoFinanceControl.Infrastructure/ # Repositórios e acesso a dados
+   ├─ CoFinanceControl.Infrastructure/  # Repositórios e acesso a dados
    │  ├─ Data/
    │  │  └─ CoFinanceDbContext.cs
    │  ├─ Repositories/
    │  │  ├─ UsuarioRepository.cs
    │  │  ├─ CategoriaRepository.cs
-   │  │  └─ TransacaoRepository.cs
+   │  │  ├─ TransacaoRepository.cs
+   │  │  ├─ EntidadeFinanceiraRepository.cs
+   │  │  └─ CredencialRepository.cs
    │  └─ Extensions/
    │     └─ InjecaoDependencia.cs
    │
-   └─ CoFinanceControl.API/            # Controllers e configuração da API
+   └─ CoFinanceControl.WebApi/          # Controllers, Middleware e configuração da API
       ├─ Controllers/
-      │  ├─ UsuariosController.cs
+      │  ├─ AutentificacaoController.cs
+      │  ├─ UsersController.cs
+      │  ├─ EntidadeFinanceiraController.cs
       │  ├─ CategoriasController.cs
       │  └─ TransacoesController.cs
+      ├─ Middleware/
+      │  └─ ExceptionHandlerMiddleware.cs
+      ├─ Common/
+      │  ├─ IJwtService.cs / JwtService.cs
+      │  └─ IUsuarioAutenticado.cs / UsuarioAutenticado.cs
       ├─ Program.cs
       └─ appsettings*.json
 ```
@@ -68,14 +92,17 @@ codigo-fonte/
 
 | Padrões | Descrição | Implementação |
 | --- | --- | --- |
-| Arquitetura | Clean Architecture com DDD | Separação em Domain, Application, Infrastructure e API |
+| Arquitetura | Clean Architecture com DDD | Separação em Domain, Application, Infrastructure e WebApi |
 | Versionamento de API | `/api/[controller]` | Preparado para versionamento futuro |
 | Formato de resposta | `JSON` | Padronizado via controllers |
 | Validação | DataAnnotations + Regras de Negócio | Validações em DTOs e Services |
 | Persistência | Entity Framework Core | In-Memory para desenvolvimento, SQL Server para produção |
-| Documentação | Swagger/OpenAPI | Disponível em `/swagger` |
-| Injeção de Dependência | Nativa do .NET | Configurada em `InjecaoDependencia.cs` |
-| Tratamento de Exceções | Middleware customizado | BadRequest (400) e NotFound (404) padronizados |
+| Documentação | Swagger/OpenAPI | Disponível em `/swagger` (com suporte a Bearer token) |
+| Injeção de Dependência | Nativa do .NET | Configurada em `InjecaoDependencia.cs` e `Program.cs` |
+| Tratamento de Exceções | Middleware customizado | 400, 404, 500 padronizados; ArgumentException → 400 |
+| Autenticação | JWT Bearer (HS256) | Configurado em `Program.cs`; claims: UsuarioId, EntidadeFinanceiraId, Cargo |
+| Autorização | RBAC por Cargo | `[Authorize(Roles = "...")]` por endpoint |
+| Hash de senha | BCrypt (BCrypt.Net-Next 4.1.0) | Senhas nunca armazenadas em texto puro |
 
 ## Instalação da aplicação
 
@@ -109,6 +136,8 @@ dotnet run
 https://localhost:7138/swagger
 ```
 
+> **Autenticação no Swagger:** Clique em "Authorize" (cadeado) e informe `Bearer <token>` no campo. O token é obtido via `POST /api/Autentificacao/registrar` ou `POST /api/Autentificacao/login`.
+
 **Configuração do Banco de Dados**
 
 - **Desenvolvimento**: Utiliza In-Memory Database (configurado por padrão)
@@ -132,10 +161,42 @@ https://localhost:7138/swagger
 
 | Módulo | Responsável | Status | Endpoints |
 | --- | --- | --- | --- |
-| Usuários | Gabriel Henrique | ✅ Concluído | POST, GET `/api/usuarios` |
+| Autenticação | Gabriel Henrique | ✅ Concluído | POST `/api/Autentificacao/registrar`, POST `/api/Autentificacao/login` |
+| Entidade Financeira | Gabriel Henrique | ✅ Concluído | GET, PUT, DELETE, PATCH `/api/entidadefinanceira` |
+| Usuários | Gabriel Henrique | ✅ Concluído | POST, GET, PUT, DELETE `/api/users` |
 | Categorias | Gabriel Henrique | ✅ Concluído | POST, GET, PATCH, DELETE `/api/categorias` |
 | Transações | Gabriel Henrique | ✅ Concluído | POST, GET, PATCH, DELETE `/api/transacoes` |
 | Rateios | Gabriel Henrique | ✅ Integrado | Vinculado a Transações (sistema de múltiplos rateios) |
+
+## Autenticação e Autorização
+
+### Fluxo de Autenticação
+
+1. **Registro**: `POST /api/Autentificacao/registrar` — cria uma Entidade Financeira, um usuário Admin e suas credenciais. Retorna um JWT token.
+2. **Login**: `POST /api/Autentificacao/login` — valida email e senha (BCrypt), retorna JWT token.
+3. **Uso do token**: Todas as rotas protegidas exigem o header `Authorization: Bearer <token>`.
+
+### Cargos disponíveis (`Cargo`)
+
+| Cargo | Valor | Permissões típicas |
+|---|---|---|
+| Admin | 1 | Acesso total: gerenciar usuários, inativar entidade, alterar tipo |
+| GerenteFinanceiro | 2 | Acesso de leitura + operações financeiras |
+| AnalistaFinanceiro | 3 | Operações de análise |
+| Contador | 4 | Operações contábeis |
+| OperadorFinanceiro | 5 | Operações básicas de registro |
+
+### Tipos de Entidade Financeira (`TipoEntidade`)
+
+| Tipo | Descrição | Restrição |
+|---|---|---|
+| Solo | Uso pessoal individual | Máximo 1 usuário |
+| Familia | Controle familiar | Múltiplos usuários |
+| Empresa | Uso corporativo | Múltiplos usuários |
+
+> Alterar de Familia/Empresa para Solo só é permitido se houver apenas 1 membro.
+
+---
 
 ## Funcionalidades Principais
 
@@ -211,10 +272,23 @@ Para detalhes sobre os casos de teste:
 
 ### Endpoints Disponíveis
 
-#### Usuários
-- `POST /api/usuarios` - Criar usuário
-- `GET /api/usuarios` - Listar usuários
-- `GET /api/usuarios/{id}` - Buscar usuário por ID
+#### Autenticação (público)
+- `POST /api/Autentificacao/registrar` - Registrar nova Entidade Financeira + usuário Admin (retorna token)
+- `POST /api/Autentificacao/login` - Autenticar e receber token JWT
+
+#### Entidade Financeira (requer autenticação)
+- `GET /api/entidadefinanceira` - Obter dados da entidade do usuário autenticado
+- `PUT /api/entidadefinanceira/{id}` - Atualizar entidade (**Admin**)
+- `DELETE /api/entidadefinanceira/{id}` - Inativar entidade (**Admin**)
+- `PATCH /api/entidadefinanceira/{id}/tipo` - Alterar tipo da entidade (**Admin**)
+
+#### Usuários (requer autenticação)
+- `POST /api/users` - Criar usuário na entidade (**Admin**)
+- `GET /api/users/{id}` - Buscar usuário por ID (todos os cargos)
+- `PUT /api/users` - Atualizar meu próprio perfil (todos os cargos)
+- `PUT /api/users/{id}` - Atualizar outro usuário (**Admin**)
+- `DELETE /api/users/{id}` - Remover usuário (**Admin**)
+- `GET /api/users` - Listar todos os usuários (**Admin**, **GerenteFinanceiro**)
 
 #### Categorias
 - `POST /api/categorias/sistema` - Criar categoria do sistema
@@ -245,7 +319,9 @@ A API retorna códigos HTTP padronizados:
 |--------|-------------|---------|
 | 200 | OK | Operação bem-sucedida |
 | 201 | Created | Recurso criado com sucesso |
-| 400 | Bad Request | Dados inválidos ou regra de negócio violada |
+| 400 | Bad Request | Dados inválidos, regra de negócio violada ou ArgumentException |
+| 401 | Unauthorized | Token JWT ausente ou inválido |
+| 403 | Forbidden | Cargo sem permissão para o endpoint |
 | 404 | Not Found | Recurso não encontrado |
 | 500 | Internal Server Error | Erro interno do servidor |
 
@@ -264,6 +340,34 @@ A API retorna códigos HTTP padronizados:
 ```
 
 ## Histórico de versões
+
+### [1.1.0] - 25/02/2026
+#### Adicionado
+- Sistema completo de autenticação JWT (registro + login)
+- Hash de senhas com BCrypt (BCrypt.Net-Next 4.1.0)
+- Autorização baseada em Cargo (RBAC) em todos os endpoints
+- Suporte a múltiplos perfis (Cargo): Admin, GerenteFinanceiro, AnalistaFinanceiro, Contador, OperadorFinanceiro
+- Módulo EntidadeFinanceira: Criar, Atualizar, Desativar, Reativar, AlterarTipo
+- Módulo Credencial: repositório e serviço completos
+- Endpoint `PATCH /entidadefinanceira/{id}/tipo` para alterar tipo da entidade com validações
+- Token JWT gerado automaticamente ao registrar
+- Swagger com suporte a Bearer token (botão Authorize)
+- Value Object `Senha` com factory `DeHash()` para hashes BCrypt
+- `IUsuarioAutenticado` lendo claims do HttpContext
+- Registro automático de todas as dependências em `InjecaoDependencia.cs` e `Program.cs`
+
+#### Corrigido
+- `ArgumentException` → HTTP 400 (antes retornava 500)
+- `DomainExeption` → HTTP 400 (antes estava mapeado como 404)
+- Typo `"applicarion/json"` → `"application/json"` no middleware
+- `WithMany()` no DbContext apontando para coleção `Usuarios`
+- Lambda de mapeamento de `Senha` no DbContext (`senha.HasValue ? senha.Value.Valor : null`)
+- Ordenação de validação no `UsuarioService.CriarAsync` (validar antes de persistir)
+
+#### Segurança
+- Senhas nunca armazenadas em texto puro
+- Endpoints protegidos com `[Authorize]` e restrição por `Roles`
+- JWT com expiração configurável (`Jwt:ExpiracaoHoras` no appsettings)
 
 ### [1.0.0] - 05/02/2026
 #### Adicionado
@@ -320,15 +424,19 @@ A API retorna códigos HTTP padronizados:
 
 ## Próximas Melhorias
 
-- [ ] Autenticação e autorização (JWT)
+- [x] Autenticação e autorização (JWT) ✅ v1.1.0
+- [ ] CredencialController (alterar email/senha pelo usuário)
+- [ ] Migração de InMemory para SQL Server (Migrations)
 - [ ] Testes unitários automatizados
 - [ ] Soft delete
 - [ ] Logs estruturados
 - [ ] Cache de dados
+- [ ] Filtros e paginação nas listagens
 - [ ] Validação de CPF
 - [ ] Upload de anexos
 - [ ] Relatórios financeiros
 - [ ] Dashboard com gráficos
+- [ ] OAuth via Google (GoogleId em Credencial)
 
 ## Licença
 

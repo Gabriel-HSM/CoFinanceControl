@@ -7,5 +7,6 @@ namespace CoFinanceControl.Application.EntidadeFinanceiraApp.Services
         Task<EntidadeFinanceiraDto> ObterAsync(CancellationToken ct = default);
         Task<EntidadeFinanceiraDto?> AtualizarAsync(Guid id, AtualizarEntidadeDto dto, CancellationToken ct = default);
         Task<bool> InativarAsync(Guid id, CancellationToken ct = default);
+        Task<EntidadeFinanceiraDto> AlterarTipoEntidadeAsync(Guid id, AlterarTipoEntidadeDto dto, CancellationToken ct = default);
     }
 }

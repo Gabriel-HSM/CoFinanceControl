@@ -6,6 +6,7 @@ namespace CoFinanceControl.Application.Autentificacao.Services
     {
         Task<ResultadoAutentificacaoDto> CriarAsync(CriarAutentificacaoDto dto, CancellationToken ct = default);
 
-        Task<LoginDto> LoginAsync(LoginDto dto, CancellationToken ct = default);
+        // TODO: alterar retorno para incluir JWT quando for implementado
+        Task<ResultadoAutentificacaoDto> LoginAsync(LoginDto dto, CancellationToken ct = default);
     }
 }

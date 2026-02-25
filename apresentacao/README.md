@@ -1,4 +1,4 @@
-# Apresentação do Projeto
+# Apresentação do Projeto — CoFinance Control
 
 ## Conjunto de Slides
 
@@ -9,6 +9,13 @@ A apresentação do projeto consiste na geração de um conjunto de slides em um
 > - Solução Implementada (funcionalidades de software)
 > - Conclusão da elaboração do projeto (pontos positivos, desafios, aprendizado).
 
+**Tópicos sugeridos para os slides:**
+1. Problema: controlar finanças pessoais e corporativas de forma centralizada e segura
+2. Público-alvo: pessoas físicas (Solo/Família) e jurídicas (Empresa)
+3. Solução: API RESTful com Clean Architecture, autenticação JWT, RBAC e múltiplos perfis por entidade financeira
+4. Principais funcionalidades: Registro/Login, Transações, Categorias, Rateios, Entidade Financeira com tipos (Solo/Família/Empresa)
+5. Stack técnica: .NET 8, ASP.NET Core, EF Core, BCrypt, JWT Bearer, Swagger
+
 [Adicione pdf de apresentação.]
 
 > **Links Úteis**:
@@ -18,8 +25,14 @@ A apresentação do projeto consiste na geração de um conjunto de slides em um
 
 ## Vídeo de apresentação
 
-A equipe também deverá gravar um vídeo de, no máximo, três minutos, com a apresentação da solução. Vocês deverão abrir a aplicação hospedada e apresentar o seu funcionamento.  Poderão ser utilizados quaisquer recursos na montagem do vídeo, mas não se esqueçam de mostrar as funcionalidades da aplicação. Seguem as especificações técnicas que devem ser obedecidas na geração do vídeo:
+A equipe também deverá gravar um vídeo de, no máximo, três minutos, com a apresentação da solução. Abrir a aplicação no Swagger (`https://localhost:7138/swagger`), demonstrar o fluxo completo:
+1. `POST /api/Autentificacao/registrar` — criar conta e receber token
+2. Autorizar no Swagger com o token recebido
+3. `GET /api/entidadefinanceira` — visualizar dados da entidade
+4. `POST /api/users` — adicionar usuário à entidade
+5. `POST /api/transacoes` — registrar transação com rateio
 
+> Especificações técnicas do vídeo:
 > - tamanho do arquivo limitado a 90Mb
 > - taxa de FPS limitada a 30 quadros por segundo
 > - resolução HD (720p) ou Full HD (1080p)

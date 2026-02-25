@@ -21,6 +21,20 @@ namespace CoFinanceControl.Domain.Models.Credencial.ValueObjects
 
             Valor = valor;
         }
+        // Cria Senha a partir de um hash já processado (ex: BCrypt), sem validar formato
+        public static Senha DeHash(string hash)
+        {
+            if (string.IsNullOrWhiteSpace(hash))
+                throw new ArgumentException("O hash não pode ser vazio.", nameof(hash));
+
+            return new Senha(hash, isHash: true);
+        }
+
+        private Senha(string valor, bool isHash) 
+        {
+            Valor = valor;
+        }
+
         public override string ToString() => Valor;
         public static implicit operator string(Senha senha) => senha.Valor; 
     }

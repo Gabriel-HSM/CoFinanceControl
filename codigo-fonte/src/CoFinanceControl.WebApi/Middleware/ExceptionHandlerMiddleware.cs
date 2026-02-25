@@ -41,6 +41,10 @@ namespace CoFinanceControl.WebApi.Middleware
             {
                 await WriteError(context, StatusCodes.Status400BadRequest, ex.Message);
             }
+            catch (ArgumentException ex)
+            {
+                await WriteError(context, StatusCodes.Status400BadRequest, ex.Message);
+            }
             catch (Exception)
             {
                 await WriteError(context, StatusCodes.Status500InternalServerError, "ErroInternoDoServidor");

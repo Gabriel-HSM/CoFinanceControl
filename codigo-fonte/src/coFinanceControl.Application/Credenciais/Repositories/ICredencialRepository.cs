@@ -6,6 +6,7 @@ namespace CoFinanceControl.Application.Credenciais.Repositories
     {
         Task AdicionarAsync(Credencial credencial, CancellationToken ct = default);
         Task<bool> ExisteComEmailAsync(string email, CancellationToken ct = default);
-        Task AtualizarAsync(Guid id, CancellationToken ct = default);
+        Task<Credencial?> ObterPorEmailAsync(string email, CancellationToken ct = default);
+        Task AtualizarAsync(Credencial credencial, CancellationToken ct = default);
     }
 }
